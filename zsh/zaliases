@@ -2,7 +2,7 @@
 alias activate='source venv/bin/activate'
 alias buzzsaw='cd /Users/rew1red/Development/Phobio/buzzsaw; activate'
 alias safetrade='cd /Users/rew1red/Development/Phobio/safetrade;'
-alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+alias s='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 
 dev() {
   if [ "$1" = "l" ]; then
