@@ -109,7 +109,6 @@
 [core]
   autocrlf = false
   editor = vim
-  excludesfile = ~/.yadr/git/gitignore
 [advice]
   statusHints = false
 [diff]
@@ -123,3 +122,6 @@
   enabled = true
 [include]
   path = .gitconfig.user
+[user]
+	name = wastrachan
+	email = winston.astrachan@gmail.com
