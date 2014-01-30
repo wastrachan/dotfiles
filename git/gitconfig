@@ -52,6 +52,7 @@
 
   # pull
   pl = pull                         # pull
+  fo = fetch origin                 # fetch origin
 
   # push
   ps = push                         # push
@@ -74,6 +75,7 @@
   sl = stash list                   # list stashes
   sa = stash apply                  # apply stash (restore changes)
   sd = stash drop                   # drop stashes (destory changes)
+  sp = stash pop                    # apply stash and drop
 
   # status
   s = status                        # status
