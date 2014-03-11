@@ -13,10 +13,6 @@ Session.vim
 
 ## Virtualenv
 .Python
-[Bb]in
-[Ii]nclude
-[Ll]ib
-[Ss]cripts
 venv/*
 
 ## Vagrant

@@ -1,8 +1,8 @@
 ### Work related stuff
 alias activate='source venv/bin/activate'
 alias buzzsaw='cd /Users/rew1red/Development/Phobio/buzzsaw; activate'
+alias quixotic='cd /Users/rew1red/Development/Phobio/quixotic; activate'
 alias safetrade='cd /Users/rew1red/Development/Phobio/safetrade;'
-alias s='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 
 dev() {
   if [ "$1" = "l" ]; then
@@ -15,6 +15,9 @@ dev() {
     cd /Users/rew1red/Development/
   fi
 }
+
+# Sublime Text
+alias s='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 
 # PS
 alias psx="ps aux"
@@ -32,7 +35,7 @@ cd() { builtin cd $@ && ls }
 alias lsg='ll | grep'
 
 # Alias Editing
-alias ae="vim ${ZDOTDIR:-$HOME}/.zaliases" #alias edit
+alias ae="s ${ZDOTDIR:-$HOME}/.zaliases" #alias edit
 alias ar="source ${ZDOTDIR:-$HOME}/.zaliases" #alias reload
 
 # zsh profile editing
@@ -78,6 +81,7 @@ alias glg='git l'
 alias glog='git l'
 alias co='git co'
 alias gf='git fetch'
+alias gfo='git fetch origin'
 alias gfch='git fetch'
 alias gd='git diff'
 alias gb='git b'
