@@ -5,7 +5,9 @@ alias carbon='cd /Users/rew1red/Development/Phobio/carbon'
 alias quixotic='cd /Users/rew1red/Development/Phobio/quixotic; activate'
 alias safetrade='cd /Users/rew1red/Development/Phobio/safetrade;'
 alias asterix='cd /Users/rew1red/Development/Asterix/control-tower; activate'
+alias dotio='cd /Users/rew1red/Development/Phobio/phobdotio; activate; export DJANGO_SETTINGS_MODULE=phobdotio.settings.local'
 alias hangar='cd /Users/rew1red/Development/Asterix/hangar'
+alias comms='cd /Users/rew1red/Development/Phobio/comms-android'
 
 dev() {
   if [ "$1" = "l" ]; then
@@ -38,6 +40,11 @@ cd() { builtin cd $@ && ls }
 
 # show me files matching "ls grep"
 alias lsg='ll | grep'
+
+# Start and stop things with Lunchy
+alias stop='lunchy stop'
+alias start='lunchy start -f'
+alias status='lunchy status'
 
 # Alias Editing
 alias ae="s ${ZDOTDIR:-$HOME}/.zaliases" #alias edit
