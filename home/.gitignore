@@ -13,7 +13,7 @@ Session.vim
 
 ## Virtualenv
 .Python
-venv/*
+venv/
 
 ## Vagrant
 .vagrant/
@@ -45,4 +45,3 @@ Icon
 *.iws
 *.iml
 .idea_modules/
-

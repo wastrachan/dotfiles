@@ -1,0 +1,65 @@
+### Work related stuff
+alias activate='source venv/bin/activate'
+alias buzzsaw='cd /Users/rew1red/Development/Phobio/buzzsaw; activate'
+alias carbon='cd /Users/rew1red/Development/Phobio/carbon'
+alias quixotic='cd /Users/rew1red/Development/Phobio/quixotic; activate'
+alias dotio='cd /Users/rew1red/Development/Phobio/phobdotio; activate; export DJANGO_SETTINGS_MODULE=phobdotio.settings.local'
+alias comms='cd /Users/rew1red/Development/Phobio/comms-android'
+
+dev() {
+  if [ "$1" = "l" ]; then
+    cd /Users/rew1red/Development/LANFest/
+  elif [ "$1" = "p" ]; then
+    cd /Users/rew1red/Development/Phobio/
+  elif [ "$1" = "o" ]; then
+    cd /Users/rew1red/Development/Other/
+  else
+    cd /Users/rew1red/Development/
+  fi
+}
+
+# Sublime Text
+alias s='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+
+# PS
+alias psx="ps aux"
+alias psg="ps aux | grep "
+
+# Show human friendly numbers and colors
+alias ls='ls -AFhG'
+alias ll='ls -l'
+alias du='du -h -d 2'
+
+# Moving around
+cd() { builtin cd $@ && ls }
+
+# show me files matching "ls grep"
+alias lsg='ll | grep'
+
+# Start and stop things with Lunchy
+alias stop='lunchy stop'
+alias start='lunchy start -f'
+alias status='lunchy status'
+
+# Alias Editing
+alias ae="s ${ZDOTDIR:-$HOME}/.aliases"
+alias ar="source ${ZDOTDIR:-$HOME}/.aliases"
+
+# zsh profile editing
+alias ze='vim ~/.zshrc'
+alias zr='source ~/.zshrc'
+
+# Common shell functions
+alias less='less -r'
+alias tf='tail -f'
+alias l='less'
+alias lh='ls -alt | head' # see the last modified files
+alias screen='TERM=screen screen'
+alias cl='clear'
+
+# Zipping
+alias gz='tar -zcvf'
+
+alias ka9='killall -9'
+alias k9='kill -9'
+
