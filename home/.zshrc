@@ -2,7 +2,7 @@
 export ZSH=${ZDOTDIR:-$HOME}/.oh-my-zsh
 
 # Select Theme
-ZSH_THEME="robbyrussell"
+ZSH_THEME="lukerandall"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -37,7 +37,7 @@ ZSH_THEME="robbyrussell"
 
 
 # Oh-My-ZSH Plugins
-plugins=(git)
+plugins=(brew django fabric gem git knife python sudo)
 
 source $ZSH/oh-my-zsh.sh
 
