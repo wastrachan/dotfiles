@@ -1,1 +1,1 @@
-## rew1red's ZSH configuration
+Personal ZSH Configuration

@@ -24,11 +24,15 @@ alias s='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 # PS
 alias psx="ps aux"
 alias psg="ps aux | grep "
+alias htop="sudo htop"
 
 # Show human friendly numbers and colors
 alias ls='ls -AFhG'
 alias ll='ls -l'
 alias du='du -h -d 2'
+
+# NPM ls at one depth
+alias npmls='npm ls --depth=0'
 
 # Moving around
 cd() { builtin cd $@ && ls }

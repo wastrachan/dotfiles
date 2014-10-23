@@ -54,7 +54,7 @@ source "${ZDOTDIR:-$HOME}/.aliases"
 # Update Paths
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # PATH=$PATH:$HOME/.rvm/bin
-# PATH=$PATH:./node_modules/.bin
+PATH=$PATH:./node_modules/.bin
 PATH=$PATH:/opt/android-sdk-macosx/ant/bin:/opt/android-sdk-macosx/platform-tools:/opt/android-sdk-macosx/tools
 
 # Stop that awful error when compiling
