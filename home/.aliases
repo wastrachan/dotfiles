@@ -4,6 +4,7 @@ alias buzzsaw='cd /Users/rew1red/Development/Phobio/buzzsaw; activate'
 alias carbon='cd /Users/rew1red/Development/Phobio/carbon'
 alias quixotic='cd /Users/rew1red/Development/Phobio/quixotic; activate'
 alias dotio='cd /Users/rew1red/Development/Phobio/phobdotio; activate; export DJANGO_SETTINGS_MODULE=phobdotio.settings.local'
+alias asterix='cd /Users/rew1red/Development/Asterix/flightdeck; activate; export DJANGO_SETTINGS_MODULE=flightdeck.settings_local'
 alias comms='cd /Users/rew1red/Development/Phobio/comms-android'
 
 dev() {
@@ -17,6 +18,11 @@ dev() {
     cd /Users/rew1red/Development/
   fi
 }
+
+# Screen
+alias scls="screen -ls"
+alias scr="screen -dRR"
+# Attaches to a screen session. If the session is attached elsewhere, detaches that other display. If no session exists, creates one. If multiple sessions exist, uses the first one.
 
 # Sublime Text
 alias s='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'

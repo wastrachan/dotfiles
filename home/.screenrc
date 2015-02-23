@@ -1,14 +1,35 @@
 # Turn off start message:
 startup_message off
 
-# Set messages timeout to one second:
+# Set messages timeout to one second
 msgwait 1
 
-# Hardstatus
-hardstatus alwayslastline
-hardstatus string '%{= kG}[%{R}%H%{g}][%{B}%w %=%{kG}][%{R}%l%{g}][%{B}%c%{g}]'
+# Allow bold colors
+attrcolor b ".I"
 
-# Turns off alternate screen switching in xterms,
-# # so that text in screen will go into the xterm's scrollback buffer:
-termcapinfo xterm* ti@:te@
-altscreen on
+# Use ZSH as our shell
+shell zsh
+
+# Tell screen how to set colors. AB = background, AF=foreground
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+
+# Enables use of shift-PgUp and shift-PgDn
+termcapinfo xterm|xterms|xs|rxvt ti@:te@
+
+# Erase background with current bg color
+defbce "on"
+
+# Enable 256 color term
+term xterm-256color
+
+# Cache 30000 lines for scroll back
+defscrollback 30000
+
+# Hardstatus
+hardstatus alwayslastline 
+hardstatus string '%{= w}%-w%{= b}[%{= r}%n %t%{= b}]%{= w}%+w%-=%{= b}%H %{= w}| %{= b}%c'
+
+
+
+# termcapinfo xterm ti@:te@
+# altscreen on
