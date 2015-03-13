@@ -22,7 +22,6 @@ dev() {
 scrb() {
     # Work on Buzzsaw
     screen -dmS buzzsaw -t buzzsaw
-
     screen -S buzzsaw -X screen -t runserver
     screen -S buzzsaw -X screen -t rq-worker
 
@@ -70,7 +69,7 @@ alias ae="s ${ZDOTDIR:-$HOME}/.aliases"
 alias ar="source ${ZDOTDIR:-$HOME}/.aliases"
 
 # zsh profile editing
-alias ze='vim ~/.zshrc'
+alias ze='s ~/.zshrc'
 alias zr='source ~/.zshrc'
 
 # Common shell functions
