@@ -55,6 +55,12 @@ source "${ZDOTDIR:-$HOME}/.aliases"
 export PATH=$HOME/bin:./node_modules/.bin:/usr/local/bin:$PATH
 PATH=$PATH:/opt/android-sdk-macosx/ant/bin:/opt/android-sdk-macosx/platform-tools:/opt/android-sdk-macosx/tools
 
+# Setup PyEnv
+export PYENV_SHELL="zsh"
+export PYENV_ROOT="$HOME/.pyenv"
+PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - )"
+
 # Stop that awful error when compiling
 export CFLAGS=-Qunused-arguments
 export CPPFLAGS=-Qunused-arguments

@@ -8,15 +8,29 @@ alias asterix='cd /Users/rew1red/Development/Asterix/flightdeck; activate; expor
 alias comms='cd /Users/rew1red/Development/Phobio/comms-android'
 
 dev() {
-  if [ "$1" = "l" ]; then
-    cd /Users/rew1red/Development/LANFest/
-  elif [ "$1" = "p" ]; then
-    cd /Users/rew1red/Development/Phobio/
-  elif [ "$1" = "o" ]; then
-    cd /Users/rew1red/Development/Other/
-  else
-    cd /Users/rew1red/Development/
-  fi
+    if [ "$1" = "l" ]; then
+        cd /Users/rew1red/Development/LANFest/
+    elif [ "$1" = "p" ]; then
+        cd /Users/rew1red/Development/Phobio/
+    elif [ "$1" = "o" ]; then
+        cd /Users/rew1red/Development/Other/
+    else
+        cd /Users/rew1red/Development/
+    fi
+}
+
+scrb() {
+    # Work on Buzzsaw
+    screen -dmS buzzsaw -t buzzsaw
+
+    screen -S buzzsaw -X screen -t runserver
+    screen -S buzzsaw -X screen -t rq-worker
+
+    screen -S buzzsaw -p buzzsaw -X stuff "`printf "buzzsaw\r"`"
+    screen -S buzzsaw -p runserver -X stuff "`printf "buzzsaw\r python manage.py runserver 8000 --settings=buzzsaw.settings_local\r"`"
+    screen -S buzzsaw -p rq-worker -X stuff "`printf "buzzsaw\r python manage.py rqworker high default low --settings=buzzsaw.settings_local\r"`"
+
+    screen -dRR buzzsaw -p buzzsaw
 }
 
 # Screen
