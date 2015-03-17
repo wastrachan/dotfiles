@@ -17,6 +17,7 @@
   chunkyadd = add --patch           # stage commits chunk by chunk
   recent-branches = !git for-each-ref --count=5 --sort=-committerdate refs/heads/ --format='%(refname:short)'
   b = branch -v                     # branch (verbose)
+  br = branch -r                    # branch (remote)
   c = commit -m                     # commit with message
   ca = commit -am                   # commit all with message
   ci = commit                       # commit
@@ -31,8 +32,9 @@
   l = log --graph --date=short
   changes = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status
   short = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\"
-  changelog = log --pretty=format:\" * %s [%cn]\"
-  cl = log --pretty=format:\" * %s [%cn]\"
+  cl = log --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s\" --abbrev-commit --date=relative
+  changelog = log --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s\" --abbrev-commit --date=relative
+  # cl = log --pretty=format:\" * %s [%cn]\"
   pl = pull                         # pull
   fo = fetch origin                 # fetch origin
   fu = fetch upstream               # fetch upstream
@@ -76,7 +78,7 @@
   autosetupmerge = true
 
 [push]
-  default = tracking
+  default = upstream
 
 [core]
   autocrlf = false
