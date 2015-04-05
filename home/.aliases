@@ -5,6 +5,7 @@ alias carbon='cd /Users/rew1red/Development/Phobio/carbon'
 alias quixotic='cd /Users/rew1red/Development/Phobio/quixotic; activate'
 alias dotio='cd /Users/rew1red/Development/Phobio/phobdotio; activate; export DJANGO_SETTINGS_MODULE=phobdotio.settings.local'
 alias asterix='cd /Users/rew1red/Development/Asterix/flightdeck; activate; export DJANGO_SETTINGS_MODULE=flightdeck.settings_local'
+alias blackflag='cd /Users/rew1red/Development/Other/blackflag; activate'
 alias comms='cd /Users/rew1red/Development/Phobio/comms-android'
 
 dev() {
@@ -30,6 +31,14 @@ scrb() {
     screen -S buzzsaw -p rq-worker -X stuff "`printf "buzzsaw\r python manage.py rqworker high default low --settings=buzzsaw.settings_local\r"`"
 
     screen -dRR buzzsaw -p buzzsaw
+}
+
+# Import Buzzsaw Database
+bimport() {
+    echo "Dropping old database..."
+    mysql -uroot -e 'DROP DATABASE buzzsaw; CREATE DATABASE buzzsaw;'
+    echo "Importing SQL backup..."
+    pv -cN "Import Progress" "$1" | gunzip | mysql -uroot buzzsaw 
 }
 
 # Screen

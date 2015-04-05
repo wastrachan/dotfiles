@@ -8,7 +8,8 @@ msgwait 1
 attrcolor b ".I"
 
 # Use ZSH as our shell
-shell zsh
+# shell zsh
+shell -${SHELL}
 
 # Tell screen how to set colors. AB = background, AF=foreground
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
