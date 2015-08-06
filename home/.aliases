@@ -33,6 +33,19 @@ scrb() {
     screen -dRR buzzsaw -p buzzsaw
 }
 
+scrf7() {
+    # Work on Black Flag
+    screen -dmS blackflag -t blackflag
+    screen -S blackflag -X screen -t runserver
+    screen -S blackflag -X screen -t rq-worker
+
+    screen -S blackflag -p blackflag -X stuff "`printf "blackflag\r"`"
+    screen -S blackflag -p runserver -X stuff "`printf "blackflag\r python manage.py runserver 8000\r"`"
+    screen -S blackflag -p rq-worker -X stuff "`printf "blackflag\r python manage.py rqworker high default\r"`"
+
+    screen -dRR blackflag -p blackflag
+}
+
 # Import Buzzsaw Database
 bimport() {
     echo "Dropping old database..."
@@ -41,10 +54,17 @@ bimport() {
     pv -cN "Import Progress" "$1" | gunzip | mysql -uroot buzzsaw 
 }
 
+# Knife
+alias krff='knife role from file roles/*'
+alias kdbu='knife data bag from file users data_bags/users'
+
 # Screen
 alias scls="screen -ls"
 alias scr="screen -dRR"
 # Attaches to a screen session. If the session is attached elsewhere, detaches that other display. If no session exists, creates one. If multiple sessions exist, uses the first one.
+
+# MTR
+alias mtr='sudo /usr/local/sbin/mtr'
 
 # Sublime Text
 alias s='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'

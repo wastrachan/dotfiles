@@ -40,3 +40,13 @@ export CPPFLAGS=-Qunused-arguments
 
 # Phobio-Related stuff
 export PHOBIO_TRANSLATIONS_PATH="/Users/rew1red/Dropbox/Phobio/Phobio Translations"
+
+export OS_AUTH_URL=https://identity.api.rackspacecloud.com/v2.0/
+export OS_AUTH_SYSTEM=rackspace
+export OS_REGION_NAME=DFW
+export OS_USERNAME=phobio
+export OS_TENANT_NAME=738614
+export NOVA_RAX_AUTH=1
+export OS_PASSWORD=89b15a9564b64302bdaf4f3e9960e797
+export OS_PROJECT_ID=738614
+export OS_NO_CACHE=1
