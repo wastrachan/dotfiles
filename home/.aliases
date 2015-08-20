@@ -1,12 +1,5 @@
 ### Work related stuff
 alias activate='source venv/bin/activate'
-alias buzzsaw='cd /Users/rew1red/Development/Phobio/buzzsaw; activate'
-alias carbon='cd /Users/rew1red/Development/Phobio/carbon'
-alias quixotic='cd /Users/rew1red/Development/Phobio/quixotic; activate'
-alias dotio='cd /Users/rew1red/Development/Phobio/phobdotio; activate; export DJANGO_SETTINGS_MODULE=phobdotio.settings.local'
-alias asterix='cd /Users/rew1red/Development/Asterix/flightdeck; activate; export DJANGO_SETTINGS_MODULE=flightdeck.settings_local'
-alias blackflag='cd /Users/rew1red/Development/Other/blackflag; activate'
-alias comms='cd /Users/rew1red/Development/Phobio/comms-android'
 
 dev() {
     if [ "$1" = "l" ]; then
@@ -26,9 +19,9 @@ scrb() {
     screen -S buzzsaw -X screen -t runserver
     screen -S buzzsaw -X screen -t rq-worker
 
-    screen -S buzzsaw -p buzzsaw -X stuff "`printf "buzzsaw\r"`"
-    screen -S buzzsaw -p runserver -X stuff "`printf "buzzsaw\r python manage.py runserver 8000 --settings=buzzsaw.settings_local\r"`"
-    screen -S buzzsaw -p rq-worker -X stuff "`printf "buzzsaw\r python manage.py rqworker high default low --settings=buzzsaw.settings_local\r"`"
+    screen -S buzzsaw -p buzzsaw -X stuff "`printf "workon buzzsaw\r"`"
+    screen -S buzzsaw -p runserver -X stuff "`printf "workon buzzsaw\r python manage.py runserver 8000 --settings=buzzsaw.settings_local\r"`"
+    screen -S buzzsaw -p rq-worker -X stuff "`printf "workon buzzsaw\r python manage.py rqworker high default low --settings=buzzsaw.settings_local\r"`"
 
     screen -dRR buzzsaw -p buzzsaw
 }
@@ -51,7 +44,7 @@ bimport() {
     echo "Dropping old database..."
     mysql -uroot -e 'DROP DATABASE buzzsaw; CREATE DATABASE buzzsaw;'
     echo "Importing SQL backup..."
-    pv -cN "Import Progress" "$1" | gunzip | mysql -uroot buzzsaw 
+    pv -cN "Import Progress" "$1" | gunzip | mysql -uroot buzzsaw
 }
 
 # Knife
@@ -67,7 +60,7 @@ alias scr="screen -dRR"
 alias mtr='sudo /usr/local/sbin/mtr'
 
 # Sublime Text
-alias s='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+# alias s='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 
 # PS
 alias psx="ps aux"
@@ -90,16 +83,16 @@ alias lsg='ll | grep'
 
 # Start and stop things with Lunchy
 alias stop='lunchy stop'
-alias start='lunchy start -f'
+alias start='lunchy start'
 alias status='lunchy status'
 
 # Alias Editing
-alias ae="s ${ZDOTDIR:-$HOME}/.aliases"
-alias ar="source ${ZDOTDIR:-$HOME}/.aliases"
+# alias ae="s ${ZDOTDIR:-$HOME}/.aliases"
+# alias ar="source ${ZDOTDIR:-$HOME}/.aliases"
 
 # zsh profile editing
-alias ze='s ~/.zshrc'
-alias zr='source ~/.zshrc'
+# alias ze='s ~/.zshrc'
+# alias zr='source ~/.zshrc'
 
 # Common shell functions
 alias less='less -r'
@@ -110,8 +103,8 @@ alias screen='TERM=screen screen'
 alias cl='clear'
 
 # Zipping
-alias gz='tar -zcvf'
+alias gz='tar -czvf'
+alias uz='tar -xzvf'
 
 alias ka9='killall -9'
 alias k9='kill -9'
-

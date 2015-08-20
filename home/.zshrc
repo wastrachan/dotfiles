@@ -26,8 +26,13 @@ source "${ZDOTDIR:-$HOME}/.aliases"
 
 # Update Path
 export PATH=$HOME/bin:/usr/local/bin:$PATH  # Path to local binaries
-# PATH=./node_modules/.bin:$PATH  # Local node modules, relative to directory
-# PATH=$PATH:/opt/android-sdk-macosx/ant/bin:/opt/android-sdk-macosx/platform-tools:/opt/android-sdk-macosx/tools  # For compiling Android stuff in OS X
+PATH=./node_modules/.bin:$PATH  # Local node modules, relative to directory
+
+# Set up PyEnv
+export PYENV_SHELL="zsh"
+export PYENV_ROOT="$HOME/.pyenv"
+PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - )"
 
 # Virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
