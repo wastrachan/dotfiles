@@ -1,13 +1,29 @@
 ### Work related stuff
-alias activate='source venv/bin/activate'
 
 dev() {
-    if [ "$1" = "l" ]; then
+    # Phobio Projects
+    if [[ "$1" == buz* ]]; then
+        cd /Users/rew1red/Development/Phobio/buzzsaw/
+    elif [[ "$1" == car* ]]; then
+        cd /Users/rew1red/Development/Phobio/carbon/
+
+    # F7Lans Projects
+    elif [[ "$1" == bla* ]]; then
+        cd /Users/rew1red/Development/F7Lans/blackflag/
+
+    # Asterix Projects
+    elif [[ "$1" == ast* ]]; then
+        cd /Users/rew1red/Development/Asterix/asterix/
+
+    # General Folders
+    elif [ "$1" = "l" ]; then
         cd /Users/rew1red/Development/LANFest/
     elif [ "$1" = "p" ]; then
         cd /Users/rew1red/Development/Phobio/
     elif [ "$1" = "o" ]; then
         cd /Users/rew1red/Development/Other/
+    elif [ "$1" = "f" ]; then
+        cd /Users/rew1red/Development/F7Lans/
     else
         cd /Users/rew1red/Development/
     fi
@@ -19,9 +35,9 @@ scrb() {
     screen -S buzzsaw -X screen -t runserver
     screen -S buzzsaw -X screen -t rq-worker
 
-    screen -S buzzsaw -p buzzsaw -X stuff "`printf "workon buzzsaw\r"`"
-    screen -S buzzsaw -p runserver -X stuff "`printf "workon buzzsaw\r python manage.py runserver 8000 --settings=buzzsaw.settings_local\r"`"
-    screen -S buzzsaw -p rq-worker -X stuff "`printf "workon buzzsaw\r python manage.py rqworker high default low --settings=buzzsaw.settings_local\r"`"
+    screen -S buzzsaw -p buzzsaw -X stuff "`printf "dev buzzsaw\r"`"
+    screen -S buzzsaw -p runserver -X stuff "`printf "dev buzzsaw\r python manage.py runserver 8000 --settings=buzzsaw.settings_local\r"`"
+    screen -S buzzsaw -p rq-worker -X stuff "`printf "dev buzzsaw\r python manage.py rqworker high default low --settings=buzzsaw.settings_local\r"`"
 
     screen -dRR buzzsaw -p buzzsaw
 }
@@ -32,9 +48,9 @@ scrf7() {
     screen -S blackflag -X screen -t runserver
     screen -S blackflag -X screen -t rq-worker
 
-    screen -S blackflag -p blackflag -X stuff "`printf "blackflag\r"`"
-    screen -S blackflag -p runserver -X stuff "`printf "blackflag\r python manage.py runserver 8000\r"`"
-    screen -S blackflag -p rq-worker -X stuff "`printf "blackflag\r python manage.py rqworker high default\r"`"
+    screen -S blackflag -p blackflag -X stuff "`printf "dev blackflag\r"`"
+    screen -S blackflag -p runserver -X stuff "`printf "dev blackflag\r python manage.py runserver 8000\r"`"
+    screen -S blackflag -p rq-worker -X stuff "`printf "dev blackflag\r python manage.py rqworker high default\r"`"
 
     screen -dRR blackflag -p blackflag
 }
@@ -55,6 +71,10 @@ alias kdbu='knife data bag from file users data_bags/users'
 alias scls="screen -ls"
 alias scr="screen -dRR"
 # Attaches to a screen session. If the session is attached elsewhere, detaches that other display. If no session exists, creates one. If multiple sessions exist, uses the first one.
+
+# Speedtest
+alias dltest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
+alias dltest100="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test100.zip"
 
 # MTR
 alias mtr='sudo /usr/local/sbin/mtr'
@@ -83,16 +103,8 @@ alias lsg='ll | grep'
 
 # Start and stop things with Lunchy
 alias stop='lunchy stop'
-alias start='lunchy start'
+alias start='lunchy start -f'
 alias status='lunchy status'
-
-# Alias Editing
-# alias ae="s ${ZDOTDIR:-$HOME}/.aliases"
-# alias ar="source ${ZDOTDIR:-$HOME}/.aliases"
-
-# zsh profile editing
-# alias ze='s ~/.zshrc'
-# alias zr='source ~/.zshrc'
 
 # Common shell functions
 alias less='less -r'

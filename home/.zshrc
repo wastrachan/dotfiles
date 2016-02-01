@@ -25,7 +25,7 @@ source $ZSH/oh-my-zsh.sh
 source "${ZDOTDIR:-$HOME}/.aliases"
 
 # Update Path
-export PATH=$HOME/bin:/usr/local/bin:$PATH  # Path to local binaries
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH  # Path to local binaries
 PATH=./node_modules/.bin:$PATH  # Local node modules, relative to directory
 
 # Set up PyEnv
@@ -33,15 +33,11 @@ export PYENV_SHELL="zsh"
 export PYENV_ROOT="$HOME/.pyenv"
 PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - )"
-
-# Virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Development
-source /usr/local/bin/virtualenvwrapper.sh
+eval "$(pyenv virtualenv-init -)"
 
 # Stop that awful error when compiling
-export CFLAGS=-Qunused-arguments
-export CPPFLAGS=-Qunused-arguments
+# export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include -Qunused-arguments"
+# export CPPFLAGS=-Qunused-arguments
 
 # Phobio-Related stuff
-export PHOBIO_TRANSLATIONS_PATH="/Users/rew1red/Dropbox/Phobio/Phobio Translations"
+export PHOBIO_TRANSLATIONS_PATH="/Users/rew1red/Dropbox (Phobio)/Engineering/Phobio Translations"
