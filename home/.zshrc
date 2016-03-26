@@ -13,7 +13,7 @@ ZSH_THEME="lukerandall"
 COMPLETION_WAITING_DOTS="true"
 
 # Oh-My-ZSH Plugins
-plugins=(brew fabric git knife python pip vagrant sudo wd)
+plugins=(brew git python pip sudo wd)
 
 # Set up Oh-My-ZSH
 source $ZSH/oh-my-zsh.sh
@@ -25,8 +25,11 @@ source $ZSH/oh-my-zsh.sh
 source "${ZDOTDIR:-$HOME}/.aliases"
 
 # Update Path
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH  # Path to local binaries
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$HOME/.rvm/bin:$PATH  # Path to local binaries
 PATH=./node_modules/.bin:$PATH  # Local node modules, relative to directory
+
+# Set up RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # Set up PyEnv
 export PYENV_SHELL="zsh"
@@ -34,10 +37,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - )"
 eval "$(pyenv virtualenv-init -)"
-
-# Stop that awful error when compiling
-# export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include -Qunused-arguments"
-# export CPPFLAGS=-Qunused-arguments
 
 # Phobio-Related stuff
 export PHOBIO_TRANSLATIONS_PATH="/Users/rew1red/Dropbox (Phobio)/Engineering/Phobio Translations"

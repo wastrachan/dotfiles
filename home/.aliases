@@ -79,9 +79,6 @@ alias dltest100="wget -O /dev/null http://speedtest.wdc01.softlayer.com/download
 # MTR
 alias mtr='sudo /usr/local/sbin/mtr'
 
-# Sublime Text
-# alias s='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
-
 # PS
 alias psx="ps aux"
 alias psg="ps aux | grep "
