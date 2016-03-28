@@ -27,10 +27,8 @@ term xterm-256color
 defscrollback 30000
 
 # Hardstatus
-hardstatus alwayslastline 
+hardstatus alwayslastline
 hardstatus string '%{= w}%-w%{= b}[%{= r}%n %t%{= b}]%{= w}%+w%-=%{= b}%H %{= w}| %{= b}%c'
-
-
 
 # termcapinfo xterm ti@:te@
 # altscreen on

@@ -11,10 +11,6 @@ dev() {
     elif [[ "$1" == bla* ]]; then
         cd /Users/rew1red/Development/F7Lans/blackflag/
 
-    # Asterix Projects
-    elif [[ "$1" == ast* ]]; then
-        cd /Users/rew1red/Development/Asterix/asterix/
-
     # General Folders
     elif [ "$1" = "l" ]; then
         cd /Users/rew1red/Development/LANFest/
@@ -71,10 +67,6 @@ alias kdbu='knife data bag from file users data_bags/users'
 alias scls="screen -ls"
 alias scr="screen -dRR"
 # Attaches to a screen session. If the session is attached elsewhere, detaches that other display. If no session exists, creates one. If multiple sessions exist, uses the first one.
-
-# Speedtest
-alias dltest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
-alias dltest100="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test100.zip"
 
 # MTR
 alias mtr='sudo /usr/local/sbin/mtr'
