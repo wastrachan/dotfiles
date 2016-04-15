@@ -94,6 +94,8 @@ alias lsg='ll | grep'
 alias stop='lunchy stop'
 alias start='lunchy start -f'
 alias status='lunchy status'
+alias dstart='lunchy start -f percona; lunchy start -f redis'
+alias dstop='lunchy stop percona; lunchy stop redis'
 
 # Common shell functions
 alias less='less -r'
