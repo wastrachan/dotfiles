@@ -38,6 +38,7 @@ eval "$(pyenv virtualenv-init -)"
 # Set up RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 PATH="$PATH:$HOME/.rvm/bin"
+export RUBYGEMS_GEMDEPS=-  # Save us from bundle exec
 
 # Phobio-Related stuff
 export PHOBIO_TRANSLATIONS_PATH="/Users/rew1red/Dropbox (Phobio)/Engineering/Phobio Translations"
