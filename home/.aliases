@@ -2,14 +2,18 @@
 
 dev() {
     # Phobio Projects
-    if [[ "$1" == buz* ]]; then
+    if [[ "$1" == bu* ]]; then
         cd /Users/rew1red/Development/Phobio/buzzsaw/
     elif [[ "$1" == car* ]]; then
         cd /Users/rew1red/Development/Phobio/carbon/
 
     # F7Lans Projects
-    elif [[ "$1" == bla* ]]; then
+    elif [[ "$1" == bl* ]]; then
         cd /Users/rew1red/Development/F7Lans/blackflag/
+
+    # Gamers Outreach Projects
+  elif [[ "$1" == he* ]]; then
+        cd /Users/rew1red/Development/GamersOutreach/headcrab/
 
     # General Folders
     elif [ "$1" = "l" ]; then
@@ -20,6 +24,8 @@ dev() {
         cd /Users/rew1red/Development/Other/
     elif [ "$1" = "f" ]; then
         cd /Users/rew1red/Development/F7Lans/
+    elif [ "$1" = "g" ]; then
+        cd /Users/rew1red/Development/GamersOutreach/
     else
         cd /Users/rew1red/Development/
     fi
@@ -49,6 +55,21 @@ scrf7() {
     screen -S blackflag -p rq-worker -X stuff "`printf "dev blackflag\r python manage.py rqworker high default\r"`"
 
     screen -dRR blackflag -p blackflag
+}
+
+scrh() {
+    # Work on Headcrab
+    screen -dmS headcrab -t headcrab
+    screen -S headcrab -X screen -t runserver
+    screen -S headcrab -X screen -t rq-worker
+    screen -S headcrab -X screen -t grunt
+
+    screen -S headcrab -p headcrab -X stuff "`printf "dev headcrab\r"`"
+    screen -S headcrab -p runserver -X stuff "`printf "dev headcrab\r python manage.py runserver 8000\r"`"
+    screen -S headcrab -p rq-worker -X stuff "`printf "dev headcrab\r python manage.py rqworker high default\r"`"
+    screen -S headcrab -p grunt -X stuff "`printf "dev headcrab\r"`"
+
+    screen -dRR headcrab -p headcrab
 }
 
 # Import Buzzsaw Database
