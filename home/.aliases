@@ -62,12 +62,10 @@ scrh() {
     screen -dmS headcrab -t headcrab
     screen -S headcrab -X screen -t runserver
     screen -S headcrab -X screen -t rq-worker
-    screen -S headcrab -X screen -t grunt
 
     screen -S headcrab -p headcrab -X stuff "`printf "dev headcrab\r"`"
     screen -S headcrab -p runserver -X stuff "`printf "dev headcrab\r python manage.py runserver 8000\r"`"
     screen -S headcrab -p rq-worker -X stuff "`printf "dev headcrab\r python manage.py rqworker high default\r"`"
-    screen -S headcrab -p grunt -X stuff "`printf "dev headcrab\r"`"
 
     screen -dRR headcrab -p headcrab
 }
