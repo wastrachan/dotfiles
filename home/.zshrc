@@ -13,7 +13,7 @@ ZSH_THEME="lukerandall"
 COMPLETION_WAITING_DOTS="true"
 
 # Oh-My-ZSH Plugins
-plugins=(brew git python pip sudo wd)
+plugins=(brew git python pip sudo wd brew-cask)
 
 # Set up Oh-My-ZSH
 source $ZSH/oh-my-zsh.sh
