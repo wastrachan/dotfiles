@@ -66,17 +66,13 @@
     cmd="mvim -c 'Gdiff' $MERGED"     # use fugitive.vim for 3-way merge
     keepbackup=false
 
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" \"$REMOTE\"
-
 [mergetool]
 	prompt = false
 
 [merge]
-    # summary = true
-    # verbosity = 1
-    tool = Kaleidoscope
-    # tool = mvimdiff
+    summary = true
+    verbosity = 1
+    tool = mvimdiff
 
 [apply]
     whitespace = nowarn
@@ -95,16 +91,12 @@
 [advice]
     statusHints = false
 
-[difftool "Kaleidoscope"]
-    cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-
 [difftool]
     prompt = false
 
 [diff]
-    tool = Kaleidoscope
-    # mnemonicprefix = true
-    # algorithm = patience
+    mnemonicprefix = true
+    algorithm = patience
 
 [rerere]
     enabled = true
