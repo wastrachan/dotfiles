@@ -16,7 +16,7 @@
     a = add                           # add
     chunkyadd = add --patch           # stage commits chunk by chunk
     recent-branches = !git for-each-ref --count=5 --sort=-committerdate refs/heads/ --format='%(refname:short)'
-    b = branch -v                     # branch (verbose)
+    b = branch -vv                    # branch (verbose)
     br = branch -rv                   # branch (remote)
     c = commit -m                     # commit with message
     ca = commit -am                   # commit all with message
