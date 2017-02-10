@@ -1,5 +1,4 @@
-### Work related stuff
-
+### Switch Dev Folder
 dev() {
     # Phobio Projects
     if [[ "$1" == bu* ]]; then
@@ -7,17 +6,7 @@ dev() {
     elif [[ "$1" == car* ]]; then
         cd /Users/rew1red/Development/Phobio/carbon/
 
-    # F7Lans Projects
-    elif [[ "$1" == bl* ]]; then
-        cd /Users/rew1red/Development/F7Lans/blackflag/
-
-    # Gamers Outreach Projects
-  elif [[ "$1" == he* ]]; then
-        cd /Users/rew1red/Development/GamersOutreach/headcrab/
-
     # General Folders
-    elif [ "$1" = "l" ]; then
-        cd /Users/rew1red/Development/LANFest/
     elif [ "$1" = "p" ]; then
         cd /Users/rew1red/Development/Phobio/
     elif [ "$1" = "o" ]; then
@@ -29,45 +18,6 @@ dev() {
     else
         cd /Users/rew1red/Development/
     fi
-}
-
-scrb() {
-    # Work on Buzzsaw
-    screen -dmS buzzsaw -t buzzsaw
-    screen -S buzzsaw -X screen -t runserver
-    screen -S buzzsaw -X screen -t rq-worker
-
-    screen -S buzzsaw -p buzzsaw -X stuff "`printf "dev buzzsaw\r"`"
-    screen -S buzzsaw -p runserver -X stuff "`printf "dev buzzsaw\r python manage.py runserver 8000 --settings=buzzsaw.settings_local\r"`"
-    screen -S buzzsaw -p rq-worker -X stuff "`printf "dev buzzsaw\r python manage.py rqworker high default low --settings=buzzsaw.settings_local\r"`"
-
-    screen -dRR buzzsaw -p buzzsaw
-}
-
-scrf7() {
-    # Work on Black Flag
-    screen -dmS blackflag -t blackflag
-    screen -S blackflag -X screen -t runserver
-    screen -S blackflag -X screen -t rq-worker
-
-    screen -S blackflag -p blackflag -X stuff "`printf "dev blackflag\r"`"
-    screen -S blackflag -p runserver -X stuff "`printf "dev blackflag\r python manage.py runserver 8000\r"`"
-    screen -S blackflag -p rq-worker -X stuff "`printf "dev blackflag\r python manage.py rqworker high default\r"`"
-
-    screen -dRR blackflag -p blackflag
-}
-
-scrh() {
-    # Work on Headcrab
-    screen -dmS headcrab -t headcrab
-    screen -S headcrab -X screen -t runserver
-    screen -S headcrab -X screen -t rq-worker
-
-    screen -S headcrab -p headcrab -X stuff "`printf "dev headcrab\r"`"
-    screen -S headcrab -p runserver -X stuff "`printf "dev headcrab\r python manage.py runserver 8000\r"`"
-    screen -S headcrab -p rq-worker -X stuff "`printf "dev headcrab\r python manage.py rqworker high default\r"`"
-
-    screen -dRR headcrab -p headcrab
 }
 
 # Import Buzzsaw Database
@@ -84,8 +34,8 @@ alias kdbu='knife data bag from file users data_bags/users'
 
 # Screen
 alias scls="screen -ls"
-alias scr="screen -dRR"
-# Attaches to a screen session. If the session is attached elsewhere, detaches that other display. If no session exists, creates one. If multiple sessions exist, uses the first one.
+alias scr="screen -dRR"  # Attaches to a screen session. If the session is attached elsewhere, detaches that other display. If no session exists, creates one. If multiple sessions exist, uses the first one.
+alias scrc="screen -c .screenrc"  # Launch screen with local screenrc
 
 # MTR
 alias mtr='sudo /usr/local/sbin/mtr'
@@ -121,8 +71,6 @@ alias less='less -r'
 alias tf='tail -f'
 alias l='less'
 alias lh='ls -alt | head' # see the last modified files
-alias screen='TERM=screen screen'
-alias cl='clear'
 
 # Zipping
 alias gz='tar -czvf'

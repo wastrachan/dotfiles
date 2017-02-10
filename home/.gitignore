@@ -19,6 +19,10 @@ venv/
 ## Vagrant
 .vagrant/
 
+## Screen
+.screenrc
+.screen
+
 ## Sublime Text
 *.sublime-workspace
 *.sublime-project
