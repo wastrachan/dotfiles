@@ -13,7 +13,7 @@ ZSH_THEME="lukerandall"
 COMPLETION_WAITING_DOTS="true"
 
 # Oh-My-ZSH Plugins
-plugins=(brew git python pip sudo wd brew-cask)
+plugins=(git python pip sudo wd)
 
 # Set up Oh-My-ZSH
 source $ZSH/oh-my-zsh.sh
@@ -24,11 +24,14 @@ source $ZSH/oh-my-zsh.sh
 # Load Aliases
 source "${ZDOTDIR:-$HOME}/.aliases"
 
+# Load Environment Variables
+source "${ZDOTDIR:-$HOME}/.environment"
+
 # Update Path
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH  # Path to local binaries
 PATH=./node_modules/.bin:$PATH  # Local node modules, relative to directory
 
-# Set up PyEnv
+# Set up pyenv
 export PYENV_SHELL="zsh"
 export PYENV_ROOT="$HOME/.pyenv"
 PATH="$PYENV_ROOT/bin:$PATH"
@@ -40,5 +43,8 @@ eval "$(pyenv virtualenv-init -)"
 PATH="$PATH:$HOME/.rvm/bin"
 export RUBYGEMS_GEMDEPS=-  # Save us from bundle exec
 
-# Phobio-Related stuff
-export PHOBIO_TRANSLATIONS_PATH="/Users/rew1red/Dropbox (Phobio)/Engineering/Phobio Translations"
+# Lunchy completion
+LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
+if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
+  . $LUNCHY_DIR/lunchy-completion.zsh
+fi

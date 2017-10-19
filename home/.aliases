@@ -2,34 +2,40 @@
 dev() {
     # Phobio Projects
     if [[ "$1" == bu* ]]; then
-        cd /Users/rew1red/Development/Phobio/buzzsaw/
-    elif [[ "$1" == car* ]]; then
-        cd /Users/rew1red/Development/Phobio/carbon/
+        cd /Users/winston/Development/Phobio/buzzsaw/
+    elif [[ "$1" == che* ]]; then
+        cd /Users/winston/Development/Phobio/buzzsaw-chef/
+    elif [[ "$1" == ter* ]]; then
+        cd /Users/winston/Development/Phobio/buzzsaw-terraform/
 
     # General Folders
     elif [ "$1" = "p" ]; then
-        cd /Users/rew1red/Development/Phobio/
+        cd /Users/winston/Development/Phobio/
     elif [ "$1" = "o" ]; then
-        cd /Users/rew1red/Development/Other/
+        cd /Users/winston/Development/Other/
     elif [ "$1" = "f" ]; then
-        cd /Users/rew1red/Development/F7Lans/
+        cd /Users/winston/Development/F7Lans/
     elif [ "$1" = "g" ]; then
-        cd /Users/rew1red/Development/GamersOutreach/
+        cd /Users/winston/Development/GamersOutreach/
     else
-        cd /Users/rew1red/Development/
+        cd /Users/winston/Development/
     fi
 }
 
 # Import Buzzsaw Database
 bimport() {
     echo "Dropping old database..."
-    mysql -uroot -e 'DROP DATABASE buzzsaw; CREATE DATABASE buzzsaw;'
+    mysql -uroot -e "DROP DATABASE ${2:-buzzsaw}; CREATE DATABASE ${2:-buzzsaw};"
     echo "Importing SQL backup..."
-    pv -cN "Import Progress" "$1" | gunzip | mysql -uroot buzzsaw
+    pv -cN "Import Progress" "$1" | gunzip | mysql -uroot "${2:-buzzsaw}"
 }
 
 # Knife
-alias krff='knife role from file roles/*'
+alias kru='knife role from file roles/*'
+alias keu='knife environment from file environments/*'
+alias kcu='knife cookbook upload --all'
+alias knd='knife node delete -y'
+alias kcd='knife client delete -y'
 alias kdbu='knife data bag from file users data_bags/users'
 
 # Screen
