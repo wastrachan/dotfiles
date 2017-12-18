@@ -65,12 +65,12 @@ cd() { builtin cd $@ && ls }
 # show me files matching "ls grep"
 alias lsg='ll | grep'
 
-# Start and stop things with Lunchy
-alias stop='lunchy stop'
-alias start='lunchy start -f'
-alias status='lunchy status'
-alias dstart='lunchy start -f percona; lunchy start -f redis'
-alias dstop='lunchy stop percona; lunchy stop redis'
+# Start and stop services with Homebrew
+alias bss='brew services start'
+alias bst='brew services stop'
+alias bsl='brew services list'
+alias dstart='brew services start percona-server; brew services start redis'
+alias dstop='brew services stop percona-server; brew services stop redis'
 
 # Common shell functions
 alias less='less -r'

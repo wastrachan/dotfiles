@@ -34,6 +34,8 @@ PATH=./node_modules/.bin:$PATH  # Local node modules, relative to directory
 # Set up pyenv
 export PYENV_SHELL="zsh"
 export PYENV_ROOT="$HOME/.pyenv"
+export CFLAGS="-I$(brew --prefix openssl)/include"  # Deal with 'missing' openssl libs
+export LDFLAGS="-L$(brew --prefix openssl)/lib"  # Deal with 'missing' openssl libs
 PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - )"
 eval "$(pyenv virtualenv-init -)"
@@ -42,9 +44,3 @@ eval "$(pyenv virtualenv-init -)"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 PATH="$PATH:$HOME/.rvm/bin"
 export RUBYGEMS_GEMDEPS=-  # Save us from bundle exec
-
-# Lunchy completion
-LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
-if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
-  . $LUNCHY_DIR/lunchy-completion.zsh
-fi
