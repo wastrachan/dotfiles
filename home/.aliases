@@ -1,34 +1,8 @@
-### Switch Dev Folder
-dev() {
-    # Phobio Projects
-    if [[ "$1" == bu* ]]; then
-        cd /Users/winston/Development/Phobio/buzzsaw/
-    elif [[ "$1" == che* ]]; then
-        cd /Users/winston/Development/Phobio/buzzsaw-chef/
-    elif [[ "$1" == ter* ]]; then
-        cd /Users/winston/Development/Phobio/buzzsaw-terraform/
-
-    # General Folders
-    elif [ "$1" = "p" ]; then
-        cd /Users/winston/Development/Phobio/
-    elif [ "$1" = "o" ]; then
-        cd /Users/winston/Development/Other/
-    elif [ "$1" = "f" ]; then
-        cd /Users/winston/Development/F7Lans/
-    elif [ "$1" = "g" ]; then
-        cd /Users/winston/Development/GamersOutreach/
-    else
-        cd /Users/winston/Development/
-    fi
-}
-
-# Import Buzzsaw Database
-bimport() {
-    echo "Dropping old database..."
-    mysql -uroot -e "DROP DATABASE ${2:-buzzsaw}; CREATE DATABASE ${2:-buzzsaw};"
-    echo "Importing SQL backup..."
-    pv -cN "Import Progress" "$1" | gunzip | mysql -uroot "${2:-buzzsaw}"
-}
+# Docker
+alias d='docker'
+alias dc='docker-compose'
+alias dcr='docker-compose run'
+alias pm='docker-compose run app ./manage.py'
 
 # Knife
 alias kru='knife role from file roles/*'
@@ -59,24 +33,13 @@ alias du='du -h -d 2'
 # NPM ls at one depth
 alias npmls='npm ls --depth=0'
 
-# Moving around
-cd() { builtin cd $@ && ls }
-
-# show me files matching "ls grep"
+# List files matching
 alias lsg='ll | grep'
-
-# Start and stop services with Homebrew
-alias bss='brew services start'
-alias bst='brew services stop'
-alias bsl='brew services list'
-alias dstart='brew services start percona-server; brew services start redis'
-alias dstop='brew services stop percona-server; brew services stop redis'
 
 # Common shell functions
 alias less='less -r'
 alias tf='tail -f'
 alias l='less'
-alias lh='ls -alt | head' # see the last modified files
 
 # Zipping
 alias gz='tar -czvf'
@@ -84,3 +47,34 @@ alias uz='tar -xzvf'
 
 alias ka9='killall -9'
 alias k9='kill -9'
+
+# Dev folder selection
+dev() {
+
+    # Work Projects
+    if [[ "$1" == bu* ]]; then
+        cd /Users/winston/Development/Phobio/buzzsaw/
+    elif [[ "$1" == che* ]]; then
+        cd /Users/winston/Development/Phobio/buzzsaw-chef/
+    elif [[ "$1" == ter* ]]; then
+        cd /Users/winston/Development/Phobio/buzzsaw-terraform/
+
+    # General Folders
+    elif [[ "$1" == p* ]]; then
+        cd /Users/winston/Development/Phobio/
+    elif [ "$1" = "o" ]; then
+        cd /Users/winston/Development/Other/
+    elif [[ "$1" == g* ]]; then
+        cd /Users/winston/Development/GamersOutreach/
+    else
+        cd /Users/winston/Development/
+    fi
+}
+
+# Import Buzzsaw Database
+bimport() {
+    echo "Dropping old database..."
+    mysql -h 127.0.0.1 -uroot -e "DROP DATABASE ${2:-buzzsaw}; CREATE DATABASE ${2:-buzzsaw};"
+    echo "Importing SQL backup..."
+    pv -cN "Import Progress" "$1" | gunzip | mysql -h 127.0.0.1 -uroot "${2:-buzzsaw}"
+}
