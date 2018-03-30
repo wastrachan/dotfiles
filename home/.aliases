@@ -17,9 +17,6 @@ alias scls="screen -ls"
 alias scr="screen -dRR"  # Attaches to a screen session. If the session is attached elsewhere, detaches that other display. If no session exists, creates one. If multiple sessions exist, uses the first one.
 alias scrc="screen -c .screenrc"  # Launch screen with local screenrc
 
-# MTR
-alias mtr='sudo /usr/local/sbin/mtr'
-
 # PS
 alias psx="ps aux"
 alias psg="ps aux | grep "
@@ -47,6 +44,11 @@ alias uz='tar -xzvf'
 
 alias ka9='killall -9'
 alias k9='kill -9'
+
+# MTR
+if [[ "`uname`" == 'Darwin' ]]; then
+    alias mtr='sudo /usr/local/sbin/mtr'
+fi
 
 # Dev folder selection
 dev() {

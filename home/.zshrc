@@ -25,20 +25,26 @@ source $ZSH/oh-my-zsh.sh
 source "${ZDOTDIR:-$HOME}/.aliases"
 
 # Load Environment Variables
-source "${ZDOTDIR:-$HOME}/.environment"
+if [ -f "${ZDOTDIR:-$HOME}/.environment" ]; then
+    source "${ZDOTDIR:-$HOME}/.environment"
+fi
 
 # Update Path
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH  # Path to local binaries
 PATH=./node_modules/.bin:$PATH  # Local node modules, relative to directory
 
 # Set up pyenv
-export PYENV_SHELL="zsh"
-export PYENV_ROOT="$HOME/.pyenv"
-export CFLAGS="-I$(brew --prefix openssl)/include"  # Deal with 'missing' openssl libs
-export LDFLAGS="-L$(brew --prefix openssl)/lib"  # Deal with 'missing' openssl libs
-PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - )"
-eval "$(pyenv virtualenv-init -)"
+if [ -d "$HOME/.pyenv" ]; then
+    export PYENV_SHELL="zsh"
+    export PYENV_ROOT="$HOME/.pyenv"
+    export CFLAGS="-I$(brew --prefix openssl)/include"  # Deal with 'missing' openssl libs
+    export LDFLAGS="-L$(brew --prefix openssl)/lib"  # Deal with 'missing' openssl libs
+    PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init - )"
+    if [ -d "$HOME/.pyenv/plugins/pyenv-virtualenv" ]; then
+        eval "$(pyenv virtualenv-init -)"
+    fi
+fi
 
 # Set up RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
