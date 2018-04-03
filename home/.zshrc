@@ -13,7 +13,7 @@ ZSH_THEME="lukerandall"
 COMPLETION_WAITING_DOTS="true"
 
 # Oh-My-ZSH Plugins
-plugins=(git python pyenv pip sudo docker)
+plugins=(git python pip sudo docker)
 
 # Set up Oh-My-ZSH
 source $ZSH/oh-my-zsh.sh
@@ -37,10 +37,8 @@ PATH=./node_modules/.bin:$PATH  # Local node modules, relative to directory
 if [ -d "$HOME/.pyenv" ]; then
     export PYENV_SHELL="zsh"
     export PYENV_ROOT="$HOME/.pyenv"
-    export CFLAGS="-I$(brew --prefix openssl)/include"  # Deal with 'missing' openssl libs
-    export LDFLAGS="-L$(brew --prefix openssl)/lib"  # Deal with 'missing' openssl libs
     PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init - )"
+    eval "$(pyenv init -)"
     if [ -d "$HOME/.pyenv/plugins/pyenv-virtualenv" ]; then
         eval "$(pyenv virtualenv-init -)"
     fi
