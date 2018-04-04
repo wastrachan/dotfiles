@@ -50,26 +50,27 @@ if [[ "`uname`" == 'Darwin' ]]; then
     alias mtr='sudo /usr/local/sbin/mtr'
 fi
 
-# Dev folder selection
+# Dev folder selection. Will use $DEV_FOLDER as the base if it is set in the environment.
+DEV=${DEV_FOLDER:-" /Users/winston/Development"}
 dev() {
 
     # Work Projects
     if [[ "$1" == bu* ]]; then
-        cd /Users/winston/Development/Phobio/buzzsaw/
+        cd $DEV/Phobio/buzzsaw/
     elif [[ "$1" == che* ]]; then
-        cd /Users/winston/Development/Phobio/buzzsaw-chef/
+        cd $DEV/Phobio/buzzsaw-chef/
     elif [[ "$1" == ter* ]]; then
-        cd /Users/winston/Development/Phobio/buzzsaw-terraform/
+        cd $DEV/Phobio/buzzsaw-terraform/
 
     # General Folders
     elif [[ "$1" == p* ]]; then
-        cd /Users/winston/Development/Phobio/
+        cd $DEV/Development/Phobio/
     elif [ "$1" = "o" ]; then
-        cd /Users/winston/Development/Other/
+        cd $DEV/Other/
     elif [[ "$1" == g* ]]; then
-        cd /Users/winston/Development/GamersOutreach/
+        cd $DEV/GamersOutreach/
     else
-        cd /Users/winston/Development/
+        cd $DEV
     fi
 }
 

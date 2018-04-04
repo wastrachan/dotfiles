@@ -21,13 +21,13 @@ source $ZSH/oh-my-zsh.sh
 
 ############################ Personal Configuration
 
-# Load Aliases
-source "${ZDOTDIR:-$HOME}/.aliases"
-
 # Load Environment Variables
 if [ -f "${ZDOTDIR:-$HOME}/.environment" ]; then
     source "${ZDOTDIR:-$HOME}/.environment"
 fi
+
+# Load Aliases
+source "${ZDOTDIR:-$HOME}/.aliases"
 
 # Update Path
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH  # Path to local binaries
