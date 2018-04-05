@@ -51,7 +51,7 @@ if [[ "`uname`" == 'Darwin' ]]; then
 fi
 
 # Dev folder selection. Will use $DEV_FOLDER as the base if it is set in the environment.
-DEV=${DEV_FOLDER:-" /Users/winston/Development"}
+DEV=${DEV_FOLDER:-"/Users/winston/Development"}
 dev() {
 
     # Work Projects
