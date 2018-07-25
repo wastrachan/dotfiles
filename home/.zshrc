@@ -13,7 +13,7 @@ ZSH_THEME="lukerandall"
 COMPLETION_WAITING_DOTS="true"
 
 # Oh-My-ZSH Plugins
-plugins=(git python pip sudo docker)
+plugins=(git python pip sudo docker aws)
 
 # Set up Oh-My-ZSH
 source $ZSH/oh-my-zsh.sh
