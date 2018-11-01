@@ -13,9 +13,9 @@ alias kcd='knife client delete -y'
 alias kdbu='knife data bag from file users data_bags/users'
 
 # Screen
-alias scls="screen -ls"
-alias scr="screen -dRR"  # Attaches to a screen session. If the session is attached elsewhere, detaches that other display. If no session exists, creates one. If multiple sessions exist, uses the first one.
-alias scrc="screen -c .screenrc"  # Launch screen with local screenrc
+alias scls='screen -ls'
+alias scr='screen -dRR'  # Attaches to a screen session. If the session is attached elsewhere, detaches that other display. If no session exists, creates one. If multiple sessions exist, uses the first one.
+alias scrc='screen -c .screenrc'  # Launch screen with local screenrc
 
 # PS
 alias psx="ps aux"
@@ -64,7 +64,7 @@ dev() {
 
     # General Folders
     elif [[ "$1" == p* ]]; then
-        cd $DEV/Development/Phobio/
+        cd $DEV/Phobio/
     elif [ "$1" = "o" ]; then
         cd $DEV/Other/
     elif [[ "$1" == g* ]]; then
@@ -73,6 +73,9 @@ dev() {
         cd $DEV
     fi
 }
+
+# Homebrew
+alias bcask='brew cask'
 
 # Import Buzzsaw Database
 bimport() {

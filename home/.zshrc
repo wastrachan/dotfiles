@@ -13,7 +13,7 @@ ZSH_THEME="lukerandall"
 COMPLETION_WAITING_DOTS="true"
 
 # Oh-My-ZSH Plugins
-plugins=(git python pip sudo docker)
+plugins=(git python pip sudo docker kubectl aws brew)
 
 # Set up Oh-My-ZSH
 source $ZSH/oh-my-zsh.sh
@@ -30,8 +30,9 @@ fi
 source "${ZDOTDIR:-$HOME}/.aliases"
 
 # Update Path
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH  # Path to local binaries
 PATH=./node_modules/.bin:$PATH  # Local node modules, relative to directory
+PATH=~/go/bin:$PATH # GO path
+PATH=~/.gam/:$PATH # GAM path (https://github.com/jay0lee/GAM/wiki)
 
 # Set up pyenv
 if [ -d "$HOME/.pyenv" ]; then
