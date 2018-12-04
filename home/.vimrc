@@ -1,47 +1,40 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
+" Set Up Vundle
+set nocompatible
+filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
-" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-"""""""""""""""""""""""""""
 
-" PLUGIN LIST
+
+" Vundle Plugin Listing
 Plugin 'scrooloose/nerdtree.git'
-Plugin 'itchyny/lightline.vim'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-surround'
+Plugin 'yuttie/comfortable-motion.vim'
+Plugin 'vim-airline/vim-airline'
 
 
-" NERDTREE CONFIG
-" autocmd vimenter * NERDTree
-map <C-\> :NERDTreeToggle<CR>
 
-" LIGHTLINE CONFIG
-set laststatus=2
+" Complete Vundle Setup
+call vundle#end()
+filetype plugin indent on
+filetype plugin on
+
+
+
+" General Configuration
+set number
 set noshowmode
 
-if !has('gui_running')
-  set t_Co=256
-endif
 
-"""""""""""""""""""""""""""
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+" NerdTree
+map <C-\> :NERDTreeToggle<CR>
+
+" Airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'default'
+
