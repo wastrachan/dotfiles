@@ -23,7 +23,7 @@ alias psg="ps aux | grep "
 alias htop="sudo htop"
 
 # Show human friendly numbers and colors
-alias ls='ls -AFhG'
+alias ls='ls -AFhG --color=always'
 alias ll='ls -l'
 alias du='du -h -d 2'
 
