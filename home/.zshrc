@@ -49,3 +49,13 @@ fi
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 PATH="$PATH:$HOME/.rvm/bin"
 export RUBYGEMS_GEMDEPS=-  # Save us from bundle exec
+
+# Set up kubectl
+# Create ~/.kube/config/ if it does not exist. Add every file with
+# `kubeconfig` in the name (e.g. prod.kubeconfig) to the
+# $KUBECONFIG env var for kubectl to digest
+[[ -d $HOME/.kube/config ]] || mkdir $HOME/.kube/config
+for f in `ls ~/.kube/config/ | grep kubeconfig`
+do
+    export KUBECONFIG="$HOME/.kube/config/$f:$KUBECONFIG";
+done
