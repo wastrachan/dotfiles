@@ -20,7 +20,6 @@ alias scrc='screen -c .screenrc'  # Launch screen with local screenrc
 # PS
 alias psx="ps aux"
 alias psg="ps aux | grep "
-alias htop="sudo htop"
 
 # Show human friendly numbers and colors
 alias ls='ls -AFhG --color=always'
@@ -45,9 +44,10 @@ alias uz='tar -xzvf'
 alias ka9='killall -9'
 alias k9='kill -9'
 
-# MTR
+# Sudo-required apps on MacOS
 if [[ "`uname`" == 'Darwin' ]]; then
     alias mtr='sudo /usr/local/sbin/mtr'
+    alias htop="sudo htop"
 fi
 
 # Dev folder selection. Will use $DEV_FOLDER as the base if it is set in the environment.
@@ -73,9 +73,6 @@ dev() {
         cd $DEV
     fi
 }
-
-# Homebrew
-alias bcask='brew cask'
 
 # Import Buzzsaw Database
 bimport() {
