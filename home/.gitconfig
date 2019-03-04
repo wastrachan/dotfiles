@@ -107,6 +107,7 @@
 [user]
     name = wastrachan
     email = winston.astrachan@phobio.com
+    signingkey = 695A7F5DEA640DF326CF3BF019458EC7CC6028D6
 
 [filter "lfs"]
     clean = git-lfs clean %f

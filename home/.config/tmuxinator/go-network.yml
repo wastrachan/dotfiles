@@ -1,0 +1,30 @@
+name: go-network
+root: ~/
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: editor
+
+# Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
+# startup_pane: 1
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+# Runs after everything. Use it to attach to tmux with custom options etc.
+# post: tmux -CC attach -t go-network
+
+windows:
+    - core0a: ssh rew1red@192.168.255.2
+    - core0b: ssh rew1red@192.168.255.3
+    - distro0a: ssh rew1red@192.168.255.4
+    - distro0b: ssh rew1red@192.168.255.5
+    - distro1a: ssh -oPubkeyAuthentication=no -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc admin@192.168.255.6
+    - distro1b: ssh -oPubkeyAuthentication=no -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc admin@192.168.255.7
+    - distro2a: ssh -oPubkeyAuthentication=no -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc admin@192.168.255.16
+    - distro2b: ssh -oPubkeyAuthentication=no -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc admin@192.168.255.17
+    - netsvc0: ssh root@192.168.255.8
+    - netsvc1: ssh root@192.168.255.9
+    - cache0: ssh root@192.168.255.10
+    - cache1: ssh root@192.168.255.11
+    - vent0a: ssh root@192.168.255.14
+    - vent0b: ssh root@192.168.255.15
