@@ -1,27 +1,15 @@
 ############################ Oh-My-ZSH Configuration
-
-# Path to oh-my-zsh installation
 export ZSH=${ZDOTDIR:-$HOME}/.oh-my-zsh
-
-# Select Theme
 ZSH_THEME="lukerandall"
-
-# Disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
-
-# Display red dots whilst waiting for completion
 COMPLETION_WAITING_DOTS="true"
-
-# Oh-My-ZSH Plugins
+ENABLE_CORRECTION="true"
 plugins=(git python pip sudo docker kubectl aws brew)
-
-# Set up Oh-My-ZSH
 source $ZSH/oh-my-zsh.sh
 
 
 ############################ Personal Configuration
 
-# Load Environment Variables
+# Load Local Environment Variables
 if [ -f "${ZDOTDIR:-$HOME}/.environment" ]; then
     source "${ZDOTDIR:-$HOME}/.environment"
 fi
@@ -29,10 +17,16 @@ fi
 # Load Aliases
 source "${ZDOTDIR:-$HOME}/.aliases"
 
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+    export EDITOR='vim'
+else
+    export EDITOR='vim'
+fi
+
 # Update Path
 PATH=./node_modules/.bin:$PATH  # Local node modules, relative to directory
 PATH=~/go/bin:$PATH # GO path
-PATH=~/.gam/:$PATH # GAM path (https://github.com/jay0lee/GAM/wiki)
 
 # Set up pyenv
 if [ -d "$HOME/.pyenv" ]; then
@@ -46,16 +40,20 @@ if [ -d "$HOME/.pyenv" ]; then
 fi
 
 # Set up RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-PATH="$PATH:$HOME/.rvm/bin"
-export RUBYGEMS_GEMDEPS=-  # Save us from bundle exec
+if [ -d "$HOME/.rvm" ]; then
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+    PATH="$PATH:$HOME/.rvm/bin"
+    export RUBYGEMS_GEMDEPS=-  # Save us from bundle exec
+ fi
 
 # Set up kubectl
 # Create ~/.kube/config/ if it does not exist. Add every file with
 # `kubeconfig` in the name (e.g. prod.kubeconfig) to the
 # $KUBECONFIG env var for kubectl to digest
-[[ -d $HOME/.kube/config ]] || mkdir $HOME/.kube/config
-for f in `ls ~/.kube/config/ | grep kubeconfig`
-do
+if [ ! -d "$HOME/.kube/config" ]; then
+    mkdir -p $HOME/.kube/config
+fi
+for f in `ls ~/.kube/config/ | grep kubeconfig`; do
     export KUBECONFIG="$HOME/.kube/config/$f:$KUBECONFIG";
 done
+
