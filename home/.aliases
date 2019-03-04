@@ -23,6 +23,9 @@ alias psg="ps aux | grep "
 
 # Show human friendly numbers and colors
 alias ls='ls -AFhG --color=always'
+if [[ "`uname`" == 'Darwin' ]]; then
+    alias ls='ls -AFhG'
+fi
 alias ll='ls -l'
 alias du='du -h -d 2'
 
