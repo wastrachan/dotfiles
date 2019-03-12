@@ -1,9 +1,4 @@
 ---
 
-vim_use_vundle: true        # Install Vundle for Vim plugin management
 tmux_use_tpm: true          # Install TPM for Plugin management
 tmux_use_tmuxinator: true   # Install tmuxinator configuration files
-
-git_name: Winston Astrachan
-git_email: null
-git_signing_key: null

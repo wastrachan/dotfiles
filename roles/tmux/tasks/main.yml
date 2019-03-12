@@ -6,10 +6,27 @@
     dest: ~/.tmux.conf
   tags: [dev, server]
 
+- name: Create tmux plugin directory
+  file:
+    path: ~/.tmux/plugins/
+    state: directory
+  when: tmux_use_tpm
+  tags: [dev, server]
+
+- name: Update tmux plugin manager
+  git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: ~/.tmux/plugins/tpm
+    clone: true
+    update: true
+  when: tmux_use_tpm
+  tags: [dev, server]
+
 - name: Create tmuxinator config directory
   file:
     path: ~/.config/tmuxinator
     state: directory
+  when: tmux_use_tmuxinator
   tags: [dev]
 
 - name: Update tmuxinator config files
@@ -18,4 +35,5 @@
     dest: ~/.config/tmuxinator/
   with_fileglob:
     - files/tmuxinator/*.yml
+  when: tmux_use_tmuxinator
   tags: [dev]

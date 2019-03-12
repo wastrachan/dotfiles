@@ -3,15 +3,11 @@
 
 # -- general -------------------------------------------------------------------
 
-set -g default-terminal "screen-256color"
 setw -g xterm-keys on
-set -s escape-time 10
 set -sg repeat-time 600
-set -s focus-events on
 set -g prefix2 C-a
 bind C-a send-prefix -2
 set -g mouse on
-set -g history-limit 10000
 
 
 # -- display -------------------------------------------------------------------
@@ -23,19 +19,36 @@ set -g set-titles on
 # -- navigation ----------------------------------------------------------------
 
 # split panes using characters with better visual representation and use current path
-bind | split-window -h -c '#{pane_current_path}'
-bind - split-window -v -c '#{pane_current_path}'
+# bind | split-window -h -c '#{pane_current_path}'
+# bind - split-window -v -c '#{pane_current_path}'
 
 # use the current pane's path in the new window
-bind c new-window -c '#{pane_current_path}'
+# bind c new-window -c '#{pane_current_path}'
 
 # quick pane cycling
-unbind A
-bind A select-pane -t :.+
+# unbind A
+# bind A select-pane -t :.+
 
 # select next window
 unbind Space
 bind Space select-window -n
 
-# kill session
+# kill session/pane/window
 bind k confirm-before "kill-session"
+bind-key x      kill-pane
+bind-key X      kill-window
+bind-key q      confirm-before kill-session
+
+
+{% if tmux_use_tpm %}
+# -- plugins -------------------------------------------------------------------
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-pain-control'
+set -g @plugin 'tmux-plugins/tmux-yank'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run -b '~/.tmux/plugins/tpm/tpm'
+{% endif %}
