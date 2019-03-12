@@ -1,0 +1,3 @@
+---
+
+vim_use_vundle: true   # Install Vundle for Vim plugin management

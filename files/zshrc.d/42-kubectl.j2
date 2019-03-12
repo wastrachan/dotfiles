@@ -1,0 +1,14 @@
+# {{ ansible_managed }}
+
+
+# Create ~/.kube/config/ if it does not exist. Add every file with `kubeconfig`
+# in the name (e.g. prod.kubeconfig) to the $KUBECONFIG env var for kubectl to digest
+
+if [ -x `$(which kubectl)` ]; then
+    if [ ! -d "$HOME/.kube/config" ]; then
+        mkdir -p $HOME/.kube/config
+    fi
+    for f in `ls ~/.kube/config/ | grep kubeconfig`; do
+        export KUBECONFIG="$HOME/.kube/config/$f:$KUBECONFIG";
+    done
+fi

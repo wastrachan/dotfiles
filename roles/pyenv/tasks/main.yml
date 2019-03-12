@@ -1,0 +1,15 @@
+---
+
+- name: Update pyenv
+  git:
+    repo: https://github.com/pyenv/pyenv.git
+    dest: ~/.pyenv
+    clone: yes
+    update: yes
+
+- name: Update pyenv-virtualenv
+  git:
+    repo: https://github.com/pyenv/pyenv-virtualenv.git
+    dest: ~/.pyenv/plugins/pyenv-virtualenv
+    clone: yes
+    update: yes

@@ -1,0 +1,24 @@
+---
+
+- name: Install .vimrc
+  template:
+    src: files/vimrc.j2
+    dest: ~/.vimrc
+
+- name: Create Vim bundle directory
+  file:
+    path: ~/.vim/bundle/
+    state: directory
+    recurse: yes
+
+- name: Update Vundle
+  git:
+    repo: https://github.com/VundleVim/Vundle.vim.git
+    dest: ~/.vim/bundle/Vundle.vim
+    clone: true
+    update: true
+  when: vim_use_vundle
+
+- name: Update Vim plugins
+  command: vim +PluginInstall +qall
+  when: vim_use_vundle

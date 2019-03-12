@@ -1,0 +1,7 @@
+---
+
+vim_use_vundle: true   # Install Vundle for Vim plugin management
+
+git_name: Winston Astrachan
+git_email: null
+git_signing_key: null

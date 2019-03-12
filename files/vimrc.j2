@@ -1,11 +1,17 @@
-" Set Up Vundle
+" {{ ansible_managed }}
+
+" General Configuration
+set number
+set noshowmode
+set backspace=indent,eol,start
 set nocompatible
 filetype off
+
+{% if vim_use_vundle %}
+" Set Up Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-
-
 
 " Vundle Plugin Listing
 Plugin 'scrooloose/nerdtree.git'
@@ -16,20 +22,10 @@ Plugin 'tpope/vim-surround'
 Plugin 'yuttie/comfortable-motion.vim'
 Plugin 'vim-airline/vim-airline'
 
-
-
 " Complete Vundle Setup
 call vundle#end()
 filetype plugin indent on
 filetype plugin on
-
-
-
-" General Configuration
-set number
-set noshowmode
-
-
 
 " NerdTree
 map <C-\> :NERDTreeToggle<CR>
@@ -37,4 +33,4 @@ map <C-\> :NERDTreeToggle<CR>
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
-
+{% endif %}

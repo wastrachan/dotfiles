@@ -1,0 +1,21 @@
+---
+
+- name: Update tmux config
+  template:
+    src: files/tmux.conf.j2
+    dest: ~/.tmux.conf
+  tags: [dev, server]
+
+- name: Create tmuxinator config directory
+  file:
+    path: ~/.config/tmuxinator
+    state: directory
+  tags: [dev]
+
+- name: Update tmuxinator config files
+  copy:
+    src: "{{ item }}"
+    dest: ~/.config/tmuxinator/
+  with_fileglob:
+    - files/tmuxinator/*.yml
+  tags: [dev]

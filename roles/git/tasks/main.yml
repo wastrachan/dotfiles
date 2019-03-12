@@ -1,0 +1,11 @@
+---
+
+- name: Update global gitignore
+  template:
+    src: files/gitignore.j2
+    dest: ~/.gitignore
+
+- name: Update gitconfig
+  template:
+    src: files/gitconfig.j2
+    dest: ~/.gitconfig

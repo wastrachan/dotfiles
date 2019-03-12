@@ -1,0 +1,8 @@
+# {{ ansible_managed }}
+
+
+if [ -d "$HOME/.rvm" ]; then
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+    PATH="$PATH:$HOME/.rvm/bin"
+    export RUBYGEMS_GEMDEPS=-  # Save us from bundle exec
+fi

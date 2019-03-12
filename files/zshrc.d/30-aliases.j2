@@ -1,0 +1,48 @@
+# {{ ansible_managed }}
+
+
+# Docker
+alias d='docker'
+alias dc='docker-compose'
+alias dcr='docker-compose run'
+alias pm='docker-compose run app ./manage.py'
+
+# Screen
+alias scls='screen -ls'
+alias scr='screen -dRR'
+
+# PS
+alias psx="ps aux"
+alias psg="ps aux | grep "
+
+# Show human friendly numbers and colors
+alias ls='ls -AFhG --color=always'
+if [[ "`uname`" == 'Darwin' ]]; then
+    alias ls='ls -AFhG'
+fi
+alias ll='ls -l'
+alias du='du -h -d 2'
+
+# NPM ls at one depth
+alias npmls='npm ls --depth=0'
+
+# List files matching
+alias lsg='ll | grep'
+
+# Common shell functions
+alias less='less -r'
+alias tf='tail -f'
+alias l='less'
+
+# Zipping
+alias gz='tar -czvf'
+alias uz='tar -xzvf'
+
+alias ka9='killall -9'
+alias k9='kill -9'
+
+# Sudo-required apps on MacOS
+if [[ "`uname`" == 'Darwin' ]]; then
+    alias mtr='sudo /usr/local/sbin/mtr'
+    alias htop="sudo htop"
+fi
