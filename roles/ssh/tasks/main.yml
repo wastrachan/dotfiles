@@ -1,6 +1,9 @@
 ---
 
-- name: Update SSH config file
+- name: Update SSH config files
   template:
-    src: files/ssh/config.j2
-    dest: ~/.ssh/config
+    src: files/ssh/{{ item }}.j2
+    dest: ~/.ssh/{{ item }}
+  loop:
+    - config
+    - config_cisco
