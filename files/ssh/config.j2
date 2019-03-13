@@ -1,0 +1,32 @@
+#jinja2: lstrip_blocks: True
+# {{ ansible_managed }}
+
+
+Host *
+    ForwardAgent yes
+    StrictHostKeyChecking no
+    UserKnownHostsFile=/dev/null
+
+
+{% for host in ssh_host_config %}
+Host {{ host.name }}
+{% if host.hostname is defined %}
+    HostName {{ host.hostname }}
+{% endif %}
+{% if host.user is defined %}
+    User {{ host.user }}
+{% endif %}
+{% if host.port is defined %}
+    Port {{ host.port }}
+{% endif %}
+{% if host.hostkeyalgorithms is defined %}
+    HostkeyAlgorithms {{ host.hostkeyalgorithms }}
+{% endif %}
+{% if host.kexalgorithms is defined %}
+    KexAlgorithms {{ host.kexalgorithms }}
+{% endif %}
+{% if host.ciphers is defined %}
+    Ciphers {{ host.ciphers }}
+{% endif %}
+
+{% endfor %}

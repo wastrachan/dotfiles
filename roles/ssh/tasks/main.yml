@@ -1,0 +1,6 @@
+---
+
+- name: Update SSH config file
+  template:
+    src: files/ssh/config.j2
+    dest: ~/.ssh/config

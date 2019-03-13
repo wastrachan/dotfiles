@@ -18,17 +18,6 @@ set -g set-titles on
 
 # -- navigation ----------------------------------------------------------------
 
-# split panes using characters with better visual representation and use current path
-# bind | split-window -h -c '#{pane_current_path}'
-# bind - split-window -v -c '#{pane_current_path}'
-
-# use the current pane's path in the new window
-# bind c new-window -c '#{pane_current_path}'
-
-# quick pane cycling
-# unbind A
-# bind A select-pane -t :.+
-
 # select next window
 unbind Space
 bind Space select-window -n
@@ -43,7 +32,6 @@ bind-key q      confirm-before kill-session
 {% if tmux_use_tpm %}
 # -- plugins -------------------------------------------------------------------
 
-# List of plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-pain-control'

@@ -16,3 +16,5 @@
       tags: [dev, git]
     - role: pyenv
       tags: [dev, pyenv]
+    - role: ssh
+      tags: [dev, ssh]
