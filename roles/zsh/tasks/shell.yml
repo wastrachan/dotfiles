@@ -24,6 +24,7 @@
 
 - name: Change default shell to ZSH
   command: chsh -s {{ zsh_binary.files[0].path }}
+  become: true
   when:
     - zsh_binary.files|length > 0
     - ansible_system == "Linux"
