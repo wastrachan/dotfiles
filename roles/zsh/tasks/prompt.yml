@@ -1,0 +1,26 @@
+---
+
+- name: Update Oh My Zsh
+  git:
+    repo: https://github.com/robbyrussell/oh-my-zsh.git
+    dest: ~/.oh-my-zsh
+    clone: yes
+    update: yes
+    accept_hostkey: yes
+  tags: [dev, server]
+
+- name: Update spaceship
+  git:
+    repo: https://github.com/denysdovhan/spaceship-prompt.git
+    dest: ~/.oh-my-zsh/custom/themes/spaceship-prompt
+    clone: yes
+    update: yes
+    accept_hostkey: yes
+  tags: [dev, server]
+
+- name: Link spaceship
+  file:
+    src: ~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme
+    dest: ~/.oh-my-zsh/custom/themes/spaceship.zsh-theme
+    state: link
+  tags: [dev, server]
