@@ -7,14 +7,12 @@
     - group_vars/vault.yml
   roles:
     - role: zsh
-      tags: [zsh]
     - role: vim
-      tags: [dev, server, vim]
+      tags: [dev, server]
     - role: tmux
-      tags: [tmux]
     - role: git
-      tags: [dev, git]
+      tags: [dev]
     - role: pyenv
-      tags: [dev, pyenv]
+      tags: [dev]
     - role: ssh
-      tags: [dev, ssh]
+      tags: [dev]

@@ -2,10 +2,20 @@
 
 export ZSH=${ZDOTDIR:-$HOME}/.oh-my-zsh
 
-ZSH_THEME="lukerandall"
+ZSH_THEME="spaceship"
 COMPLETION_WAITING_DOTS="true"
 ENABLE_CORRECTION="false"
-
-plugins=(git python pip sudo docker kubectl aws)
+plugins=(
+  django
+  docker
+  gitfast
+  osx
+  pip
+  pyenv
+  python
+  sudo
+  systemd
+  tmuxinator
+)
 
 source $ZSH/oh-my-zsh.sh

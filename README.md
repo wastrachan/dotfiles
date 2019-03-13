@@ -59,7 +59,7 @@ My dotfiles repo was created with a couple of constants in mind:
 
 With this in mind, I have set this repo up with two types of hosts: **local** and **remote**, and two types of roles: **dev** and **server**.
 
-To divide certain files (and tasks) between **dev** and **server** hosts, tasks are marked with labels, as appropriate. This allows me to hold certain files back from a full **dev** deployment like pyenv or rvm, while still installing tmux configuration.
+To divide certain files (and tasks) between **dev** and **server** hosts, tasks are marked with labels, as appropriate. This allows me to hold certain files back from a full **dev** deployment like pyenv, while still installing tmux configuration.
 
 
 #### Project Layout

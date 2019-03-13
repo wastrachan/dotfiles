@@ -1,73 +1,8 @@
 ---
 
-- name: Locate path to ZSH
-  find:
-    paths:
-      - /usr/local/bin/
-      - /usr/bin/
-      - /bin/
-    patterns: zsh
-    follow: yes
-    file_type: any
-  register: zsh_binary
-  tags: [dev, server]
-
-- name: Change default shell to ZSH
-  user:
-    name: "{{ ansible_user_id }}"
-    shell: "{{ zsh_binary.files[0].path }}"
-  become: true
-  when:
-    - zsh_binary.files|length > 0
-    - ansible_system == "Darwin"
-  tags: [dev, server]
-
-- name: Change default shell to ZSH
-  command: chsh -s {{ zsh_binary.files[0].path }}
-  when:
-    - zsh_binary.files|length > 0
-    - ansible_system == "Linux"
-  tags: [dev, server]
-
-- name: Update Oh My Zsh
-  git:
-    repo: https://github.com/robbyrussell/oh-my-zsh.git
-    dest: ~/.oh-my-zsh
-    clone: yes
-    update: yes
-    accept_hostkey: yes
-  tags: [dev, server]
-
-- name: Create dotfiles directory
-  file:
-    path: ~/.zshrc.d
-    state: directory
-  tags: [dev, server]
-
-- name: Update zshrc
-  template:
-    src: files/zshrc.j2
-    dest: ~/.zshrc
-  tags: [dev, server]
-
-- name: Update base zsh dotfiles
-  template:
-    src: "files/zshrc.d/{{item}}.j2"
-    dest: "~/.zshrc.d/{{item}}.zsh"
-  loop:
-    - 10-omz
-    - 11-path
-    - 20-environment
-    - 30-aliases
-  tags: [dev, server]
-
-- name: Update development zsh dotfiles
-  template:
-    src: "files/zshrc.d/{{item}}.j2"
-    dest: "~/.zshrc.d/{{item}}.zsh"
-  loop:
-    - 31-aliases-dev
-    - 40-pyenv
-    - 41-rvm
-    - 42-kubectl
-  tags: [dev]
+- include_tasks: shell.yml
+  tags: [server, dev]
+- include_tasks: prompt.yml
+  tags: [server, dev]
+- include_tasks: dotdir.yml
+  tags: [server, dev]
