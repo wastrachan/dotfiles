@@ -16,7 +16,9 @@ help:
 	@echo "  server            Apply 'server' dotfiles to a remote host"
 	@echo "  dev               Apply 'dev' dotfiles to a remote host"
 	@echo ""
-	@echo "  vault             Open the Ansible vault for editing in '$$EDITOR'"
+	@echo "  vault-open        Open the Ansible vault for editing in '$$EDITOR'"
+	@echo "  vault-decrypt     Decrypt the Ansible Vault in-place"
+	@echo "  vault-encrypt     Re-encrypt the Ansible Vault"
 	@echo ""
 
 .vault_password:
@@ -55,6 +57,14 @@ dev: .vault_password
 		--tags=dev, \
 		site.yml
 
-.PHONY: vault
-vault: .vault_password
+.PHONY: vault-open
+vault-open: .vault_password
 	@ansible-vault edit group_vars/vault.yml
+
+.PHONY: vault-decrypt
+vault-decrypt: .vault_password
+	@ansible-vault decrypt group_vars/vault.yml
+
+.PHONY: vault-encrypt
+vault-encrypt: .vault_password
+	@ansible-vault encrypt group_vars/vault.yml

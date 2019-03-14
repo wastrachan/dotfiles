@@ -16,3 +16,5 @@
       tags: [dev]
     - role: ssh
       tags: [dev]
+    - role: gpg
+      tags: [dev]

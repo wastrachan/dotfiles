@@ -1,0 +1,29 @@
+---
+
+- name: Test for gpg key
+  shell: gpg --list-secret-keys
+  register: gpg_test
+  when: gpg_key is not none
+
+- name: Import gpg key
+  shell: |
+    echo '{{ gpg_key }}' | gpg --import --allow-secret-key-import --batch -
+  register: gpg_import
+  when:
+    - gpg_key is not none
+    - gpg_signature not in gpg_test.stdout
+
+- name: Trust gpg key
+  shell: |
+    expect -c '
+      spawn gpg --edit-key {{ gpg_signature }} trust quit
+      expect "Your decision? "
+      send -- "5\r"
+      expect "*ultimate trust?*"
+      send -- "y\r"
+      expect eof
+    '
+  when:
+    - gpg_key is not none
+    - gpg_signature not in gpg_test.stdout
+    - '"imported: 1" in gpg_import.stderr'

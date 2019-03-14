@@ -9,6 +9,8 @@ Your dotfiles make your shell your home, and everybody should have a dotfiles re
 - tmux config
 - vim config & [vundle](https://github.com/VundleVim/Vundle.vim) plugins
 - [pyenv](https://github.com/pyenv/pyenv) & [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv) plugin
+- gpg key import
+- ssh config
 
 ## Quickstart Guide
 
@@ -106,7 +108,9 @@ Commands:
   server            Apply 'server' dotfiles to a remote host
   dev               Apply 'dev' dotfiles to a remote host
 
-  vault             Open the Ansible vault for editing in 'vim'
+  vault-open        Open the Ansible vault for editing in 'vim'
+  vault-decrypt     Decrypt the Ansible Vault in-place
+  vault-encrypt     Re-encrypt the Ansible Vault
 ```
 
 
