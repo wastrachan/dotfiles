@@ -43,9 +43,12 @@ local: .vault_password
 server: .vault_password
 	@echo "Enter remote host to deploy server dotfiles to:"
 	@read REMOTE_HOST; \
+	echo "Enter remote user:"; \
+	read REMOTE_USER; \
 	ansible-playbook \
 		--inventory=$$REMOTE_HOST, \
 		--tags=server, \
+		-e 'ansible_ssh_user=$$REMOTE_USER' \
 		site.yml
 
 .PHONY: dev
