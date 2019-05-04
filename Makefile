@@ -41,14 +41,17 @@ local: .vault_password
 
 .PHONY: server
 server: .vault_password
-	@echo "Enter remote host to deploy server dotfiles to:"
-	@read REMOTE_HOST; \
+	@echo "Enter remote host to deploy server dotfiles to:"; \
+	read REMOTE_HOST; \
 	echo "Enter remote user:"; \
 	read REMOTE_USER; \
+	echo "Enter SSH port:"; \
+	read REMOTE_PORT; \
 	ansible-playbook \
 		--inventory=$$REMOTE_HOST, \
 		--tags=server, \
-		-e 'ansible_ssh_user=$$REMOTE_USER' \
+		-e ansible_ssh_user=$$REMOTE_USER \
+		-e ansible_ssh_port=$$REMOTE_PORT \
 		site.yml
 
 .PHONY: dev
