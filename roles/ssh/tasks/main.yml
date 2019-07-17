@@ -1,9 +1,28 @@
 ---
 
+- name: Update SSH directory
+  file:
+    path: ~/.ssh
+    state: directory
+    mode: '0700'
+
 - name: Update SSH config files
   template:
     src: files/ssh/{{ item }}.j2
     dest: ~/.ssh/{{ item }}
+    mode: '0644'
   loop:
     - config
     - config_cisco
+
+- name: Update SSH public key
+  copy:
+    content: "{{ ssh_public_key }}"
+    dest: "~/.ssh/id_rsa.pub"
+    mode: '0644'
+
+- name: Update SSH private key
+  copy:
+    content: "{{ ssh_private_key }}"
+    dest: "~/.ssh/id_rsa"
+    mode: '0600'
