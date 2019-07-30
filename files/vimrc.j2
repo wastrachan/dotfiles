@@ -7,6 +7,9 @@ set backspace=indent,eol,start
 set nocompatible
 filetype off
 
+" File type indetation
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
 {% if vim_use_vundle %}
 " Set Up Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
