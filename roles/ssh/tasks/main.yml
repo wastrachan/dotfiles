@@ -15,14 +15,16 @@
     - config
     - config_cisco
 
-- name: Update SSH public key
+- name: Update SSH public key(s)
   copy:
-    content: "{{ ssh_public_key }}"
-    dest: "~/.ssh/id_rsa.pub"
+    content: "{{ item.public_key }}"
+    dest: "~/.ssh/{{ item.name }}.pub"
     mode: '0644'
+  with_items: "{{ ssh_keys }}"
 
-- name: Update SSH private key
+- name: Update SSH private key(s)
   copy:
-    content: "{{ ssh_private_key }}"
-    dest: "~/.ssh/id_rsa"
+    content: "{{ item.private_key }}"
+    dest: "~/.ssh/{{ item.name }}"
     mode: '0600'
+  with_items: "{{ ssh_keys }}"

@@ -14,6 +14,7 @@ git_signing_key: null
 #     hostname: dev-host.23.domain.com
 #     user: root
 #     port: 2223
+#     identity_file: ~/.ssh/work_key
 #     hostkeyalgorithms: +ssh-dss
 #     kexalgorithms: +diffie-hellman-group1-sha1
 #     ciphers: aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc

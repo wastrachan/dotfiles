@@ -28,5 +28,8 @@ Host {{ host.name }}
 {% if host.ciphers is defined %}
     Ciphers {{ host.ciphers }}
 {% endif %}
+{% if host.identity_file is defined %}
+    IdentityFile {{ host.identity_file }}
+{% endif %}
 
 {% endfor %}

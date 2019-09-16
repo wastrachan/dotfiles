@@ -11,5 +11,7 @@ ssh_host_config: []
 #     kexalgorithms: +diffie-hellman-group1-sha1
 #     ciphers: aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc
 
-ssh_public_key: ""
-ssh_private_key: ""
+ssh_keys:
+  - name: id_rsa
+    public_key: ""
+    private_key: ""
