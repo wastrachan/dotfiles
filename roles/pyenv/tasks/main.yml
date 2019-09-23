@@ -7,9 +7,7 @@
     clone: yes
     update: yes
 
-- name: Update pyenv-virtualenv
-  git:
-    repo: https://github.com/pyenv/pyenv-virtualenv.git
-    dest: ~/.pyenv/plugins/pyenv-virtualenv
-    clone: yes
-    update: yes
+- name: Remove pyenv-virtualenv
+  file:
+    path: ~/.pyenv/plugins/pyenv-virtualenv
+    state: absent
