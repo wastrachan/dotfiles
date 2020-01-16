@@ -36,6 +36,20 @@ dev() {
     fi
 }
 
+
+# Edit with Atom
+a() {
+
+    # Open CWD
+    if [[ -z "$1" ]]; then
+        atom .
+    # Open file/folder
+    else
+        atom $1
+    fi
+}
+
+
 # Import Database
 bimport() {
     echo "Dropping old database..."
