@@ -27,3 +27,13 @@
     - gpg_key is not none
     - gpg_test.stdout is not search(gpg_signature)
     - "{{ gpg_import.stderr is search('imported: 1') }}"
+
+- name: Update sks-keyservers CA cert
+  copy:
+    src: sks-keyservers.netCA.pem
+    dest: ~/.gnupg/sks-keyservers.netCA.pem
+
+- name: Update GPG configuration
+  copy:
+    src: dirmngr.conf
+    dest: ~/.gnupg/dirmngr.conf
