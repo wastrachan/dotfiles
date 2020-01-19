@@ -11,7 +11,7 @@
   register: gpg_import
   when:
     - gpg_key is not none
-    - gpg_signature not in gpg_test.stdout
+    - gpg_test.stdout is not search(gpg_signature)
 
 - name: Trust gpg key
   shell: |
@@ -19,11 +19,11 @@
       spawn gpg --edit-key {{ gpg_signature }} trust quit
       expect "Your decision? "
       send -- "5\r"
-      expect "*ultimate trust?*"
+      expect "Do you really want to set this key to ultimate trust? (y/N) "
       send -- "y\r"
       expect eof
     '
   when:
     - gpg_key is not none
-    - gpg_signature not in gpg_test.stdout
-    - '"imported: 1" in gpg_import.stderr'
+    - gpg_test.stdout is not search(gpg_signature)
+    - "{{ gpg_import.stderr is search('imported: 1') }}"
