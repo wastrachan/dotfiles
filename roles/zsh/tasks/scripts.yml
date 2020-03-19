@@ -1,0 +1,11 @@
+---
+
+- name: Install utility scripts
+  copy:
+    src: "{{ item }}"
+    dest: /usr/local/bin/
+    mode: a+x
+  become: true
+  with_fileglob:
+    - files/scripts/*
+  tags: [dev]

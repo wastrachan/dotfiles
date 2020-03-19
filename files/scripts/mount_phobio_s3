@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+#
+# Wrapper for s3fs-fuse
+# Mount S3 Bucket As Local Directory
+# Copyright (c) Winston Astrachan, 2020
+
+
+CREDENTIALS_FILE=${HOME}/.passwd-s3fs
+LOCKFILE=/var/run/user/$UID/s3_mounted
+MOUNT_PATH=/mnt
+
+
+# Test for s3fs-fuse
+if [[ ! -x "$(command -v s3fs)" ]]; then
+    echo "Error: s3fs-fuse is not installed."
+    exit 1
+fi
+
+# Test for s3fs-fuse credentials
+if [[ ! -f "$CREDENTIALS_FILE" ]]; then
+    echo "Creating new credentials file at $CREDENTIALS_FILE"
+    echo "AWS Access Key ID?"
+    read ACCESS_KEY_ID
+    echo "AWS Secret?"
+    read SECRET_KEY
+    echo "$ACCESS_KEY_ID:$SECRET_KEY" > $CREDENTIALS_FILE
+    chmod 0600 $CREDENTIALS_FILE
+fi
+
+echo "Name of Bucket?"
+read BUCKET_NAME
+
+# Create mount directory
+if [[ ! -d "$MOUNT_PATH/$BUCKET_NAME" ]]; then
+    sudo mkdir -p $MOUNT_PATH/$BUCKET_NAME
+    sudo chown $USER $MOUNT_PATH/$BUCKET_NAME
+fi
+
+# Mount S3 bucket
+s3fs $BUCKET_NAME $MOUNT_PATH/$BUCKET_NAME \
+     -o passwd_file=$CREDENTIALS_FILE \
+     -o use_path_request_style
+
+echo $BUCKET_NAME >> $LOCKFILE
+echo "Mounted $MOUNT_PATH/$BUCKET_NAME"

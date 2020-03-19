@@ -6,3 +6,5 @@
   tags: [server, dev]
 - include_tasks: dotdir.yml
   tags: [server, dev]
+- include_tasks: scripts.yml
+  tags: [dev]
