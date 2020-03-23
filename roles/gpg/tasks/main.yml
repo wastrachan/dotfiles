@@ -33,7 +33,12 @@
     src: sks-keyservers.netCA.pem
     dest: ~/.gnupg/sks-keyservers.netCA.pem
 
-- name: Update GPG configuration
+- name: Update dirmngr configuration
   copy:
     src: dirmngr.conf
     dest: ~/.gnupg/dirmngr.conf
+
+- name: Update gpg configuration
+  copy:
+    src: gpg.conf
+    dest: ~/.gnupg/gpg.conf
