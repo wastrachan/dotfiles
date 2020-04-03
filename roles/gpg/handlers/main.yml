@@ -1,0 +1,4 @@
+---
+
+- name: restart gpg-agent
+  command: gpg-connect-agent reloadagent /bye

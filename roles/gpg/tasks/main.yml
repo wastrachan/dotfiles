@@ -42,3 +42,9 @@
   copy:
     src: gpg.conf
     dest: ~/.gnupg/gpg.conf
+
+- name: Update gpg agent configuration
+  copy:
+    src: gpg-agent.conf
+    dest: ~/.gnupg/gpg-agent.conf
+  notify: restart gpg-agent
