@@ -39,8 +39,8 @@
     dest: ~/.gnupg/dirmngr.conf
 
 - name: Update gpg configuration
-  copy:
-    src: gpg.conf
+  template:
+    src: gpg.conf.j2
     dest: ~/.gnupg/gpg.conf
 
 - name: Update gpg agent configuration
