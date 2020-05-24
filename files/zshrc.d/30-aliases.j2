@@ -4,8 +4,6 @@
 # Docker
 alias d='docker'
 alias dc='docker-compose'
-alias dcr='docker-compose run'
-alias pm='docker-compose run app ./manage.py'
 
 # Screen
 alias scls='screen -ls'
@@ -44,9 +42,3 @@ alias uz='tar -xzvf'
 
 alias ka9='killall -9'
 alias k9='kill -9'
-
-# Sudo-required apps on MacOS
-if [[ "`uname`" == 'Darwin' ]]; then
-    alias mtr='sudo /usr/local/sbin/mtr'
-    alias htop="sudo htop"
-fi

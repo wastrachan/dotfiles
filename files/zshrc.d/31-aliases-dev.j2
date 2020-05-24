@@ -1,15 +1,6 @@
 # {{ ansible_managed }}
 
 
-# Knife
-alias kru='knife role from file roles/*'
-alias keu='knife environment from file environments/*'
-alias kcu='knife cookbook upload --all'
-alias knd='knife node delete -y'
-alias kcd='knife client delete -y'
-alias kdbu='knife data bag from file users data_bags/users'
-
-
 # Dev folder selection. Will use $DEV_FOLDER as the base if it is set in the environment.
 DEV=${DEV_FOLDER:-"$HOME/Development"}
 dev() {
@@ -19,6 +10,10 @@ dev() {
         cd $DEV/Phobio/buzzsaw/
     elif [[ "$1" == che* ]]; then
         cd $DEV/Phobio/buzzsaw-chef/
+    elif [[ "$1" == ans* ]]; then
+        cd $DEV/Phobio/buzzsaw-ansible/
+    elif [[ "$1" == ter* ]]; then
+        cd $DEV/Phobio/buzzsaw-terraform/
 
     # Personal Projects
     elif [[ "$1" == dot* ]]; then
@@ -39,7 +34,6 @@ dev() {
 
 # Edit with Atom
 a() {
-
     # Open CWD
     if [[ -z "$1" ]]; then
         atom .
@@ -47,13 +41,4 @@ a() {
     else
         atom $1
     fi
-}
-
-
-# Import Database
-bimport() {
-    echo "Dropping old database..."
-    mysql -h 127.0.0.1 -uroot -e "DROP DATABASE ${2:-buzzsaw}; CREATE DATABASE ${2:-buzzsaw};"
-    echo "Importing SQL backup..."
-    pv -cN "Import Progress" "$1" | gunzip | mysql -h 127.0.0.1 -uroot "${2:-buzzsaw}"
 }
