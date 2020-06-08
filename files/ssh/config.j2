@@ -31,5 +31,8 @@ Host {{ host.name }}
 {% if host.identity_file is defined %}
     IdentityFile {{ host.identity_file }}
 {% endif %}
+{% if host.proxy_jump is defined %}
+    ProxyJump {{ host.proxy_jump }}
+{% endif %}
 
 {% endfor %}
