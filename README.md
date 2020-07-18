@@ -69,7 +69,6 @@ The general directory structure of this project is as follows:
 ```shell
 .
 ├── files
-│   ├── tmuxinator
 │   └── zshrc.d
 ├── group_vars
 │   ├── all.yml
