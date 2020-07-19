@@ -31,5 +31,12 @@
   loop:
     - 31-aliases-dev
     - 40-pyenv
-    - 42-kubectl
   tags: [dev]
+
+- name: Remove zsh dotfiles
+  file:
+    path: "~/.zshrc.d/{{ item }}.zsh"
+    state: absent
+  loop:
+    - 42-kubectl
+  tags: [dev, server]
