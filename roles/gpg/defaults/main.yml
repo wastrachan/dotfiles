@@ -2,3 +2,4 @@
 
 gpg_signature: null
 gpg_key: null
+gpg_default_keyserver: keyserver.ubuntu.com

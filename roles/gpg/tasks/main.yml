@@ -1,11 +1,11 @@
 ---
 
-- name: Test for gpg key
+- name: test for gpg key
   shell: gpg --list-secret-keys
   register: gpg_test
   when: gpg_key is not none
 
-- name: Import gpg key
+- name: import gpg key
   shell: |
     echo '{{ gpg_key }}' | gpg --import --allow-secret-key-import --batch -
   register: gpg_import
@@ -13,7 +13,7 @@
     - gpg_key is not none
     - gpg_test.stdout is not search(gpg_signature)
 
-- name: Trust gpg key
+- name: trust gpg key
   shell: |
     expect -c '
       spawn gpg --edit-key {{ gpg_signature }} trust quit
@@ -28,22 +28,22 @@
     - gpg_test.stdout is not search(gpg_signature)
     - "{{ gpg_import.stderr is search('imported: 1') }}"
 
-- name: Update sks-keyservers CA cert
-  copy:
-    src: sks-keyservers.netCA.pem
-    dest: ~/.gnupg/sks-keyservers.netCA.pem
+- name: delete sks-keyservers CA cert
+  file:
+    path: ~/.gnupg/sks-keyservers.netCA.pem
+    state: absent
 
-- name: Update dirmngr configuration
-  copy:
-    src: dirmngr.conf
-    dest: ~/.gnupg/dirmngr.conf
+- name: delete dirmngr configuration
+  file:
+    path: ~/.gnupg/dirmngr.conf
+    state: absent
 
-- name: Update gpg configuration
+- name: update gpg configuration
   template:
     src: gpg.conf.j2
     dest: ~/.gnupg/gpg.conf
 
-- name: Update gpg agent configuration
+- name: update gpg agent configuration
   copy:
     src: gpg-agent.conf
     dest: ~/.gnupg/gpg-agent.conf
