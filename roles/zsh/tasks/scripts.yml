@@ -1,6 +1,6 @@
 ---
 
-- name: Install utility scripts
+- name: install utility scripts
   copy:
     src: "{{ item }}"
     dest: /usr/local/bin/

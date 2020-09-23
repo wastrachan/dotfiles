@@ -1,0 +1,6 @@
+# {{ ansible_managed }}
+
+# Sets the KUBECONFIG environment variable to include all files in ~/.kube/configs/*
+if [ -d ~/.kube/configs ]; then
+    export KUBECONFIG=~/.kube/config$(find ~/.kube/configs -type f 2> /dev/null | xargs -I % echo -n ":%")
+fi

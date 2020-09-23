@@ -1,6 +1,6 @@
 ---
 
-- name: Update Oh My Zsh
+- name: update Oh My Zsh
   git:
     repo: https://github.com/robbyrussell/oh-my-zsh.git
     dest: ~/.oh-my-zsh
@@ -9,7 +9,14 @@
     accept_hostkey: yes
   tags: [dev, server]
 
-- name: Update spaceship
+- name: create oh-my-zsh completions dir
+  file:
+    dest: "~/.oh-my-zsh/completions/"
+    state: directory
+    recurse: true
+  tags: [dev, server]
+
+- name: update spaceship
   git:
     repo: https://github.com/denysdovhan/spaceship-prompt.git
     dest: ~/.oh-my-zsh/custom/themes/spaceship-prompt
@@ -18,7 +25,7 @@
     accept_hostkey: yes
   tags: [dev, server]
 
-- name: Link spaceship
+- name: link spaceship
   file:
     src: ~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme
     dest: ~/.oh-my-zsh/custom/themes/spaceship.zsh-theme

@@ -1,6 +1,6 @@
 ---
 
-- name: Locate path to ZSH
+- name: locate path to ZSH
   find:
     paths:
       - /usr/local/bin/
@@ -12,7 +12,7 @@
   register: zsh_binary
   tags: [dev, server]
 
-- name: Change default shell to ZSH
+- name: change default shell to ZSH
   user:
     name: "{{ ansible_user_id }}"
     shell: "{{ zsh_binary.files[0].path }}"
@@ -22,7 +22,7 @@
     - ansible_system == "Darwin"
   tags: [dev, server]
 
-- name: Change default shell to ZSH
+- name: change default shell to ZSH
   command: chsh -s {{ zsh_binary.files[0].path }}
   become: true
   when:

@@ -1,18 +1,18 @@
 ---
 
-- name: Create dotfiles directory
+- name: create dotfiles directory
   file:
     path: ~/.zshrc.d
     state: directory
   tags: [dev, server]
 
-- name: Update zshrc
+- name: update zshrc
   template:
     src: files/zshrc.j2
     dest: ~/.zshrc
   tags: [dev, server]
 
-- name: Update base zsh dotfiles
+- name: update base zsh dotfiles
   template:
     src: "files/zshrc.d/{{item}}.j2"
     dest: "~/.zshrc.d/{{item}}.zsh"
@@ -24,19 +24,29 @@
     - 30-aliases
   tags: [dev, server]
 
-- name: Update development zsh dotfiles
+- name: update development zsh dotfiles
   template:
     src: "files/zshrc.d/{{item}}.j2"
     dest: "~/.zshrc.d/{{item}}.zsh"
   loop:
     - 31-aliases-dev
     - 40-pyenv
+    - 42-kubectx
   tags: [dev]
 
-- name: Remove zsh dotfiles
+- name: download kubectx completions
+  get_url:
+    url: "https://raw.githubusercontent.com/ahmetb/kubectx/master/completion/{{ item }}"
+    dest: "~/.oh-my-zsh/completions/_{{ item }}"
+    mode: 0755
+  loop:
+    - kubectx.zsh
+    - kubens.zsh
+  tags: [dev]
+
+- name: remove zsh dotfiles
   file:
     path: "~/.zshrc.d/{{ item }}.zsh"
     state: absent
-  loop:
-    - 42-kubectl
+  loop: []
   tags: [dev, server]
