@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 #
-# Wrapper for encfs
-# Unmount all mounted encfs directories
+# Wrapper for gocryptfs
+# Unmount all mounted gocryptfs directories
 # Copyright (c) Winston Astrachan, 2020
 
 
-LOCKFILE=/var/run/user/$UID/encfs_mounted
-MOUNT_PATH=/mnt
+LOCKFILE=/var/run/user/$UID/gocryptfs_mounted
+MOUNT_PATH=~
 
 
 if [[ -f $LOCKFILE ]]; then
     while IFS= read -r line
     do
-        sudo umount $MOUNT_PATH/$line
-        sudo rm -r $MOUNT_PATH/$line
+        fusermount -u $MOUNT_PATH/$line
+        rm -r $MOUNT_PATH/$line
         echo "Unmounted $MOUNT_PATH/$line"
     done < "$LOCKFILE"
     rm $LOCKFILE

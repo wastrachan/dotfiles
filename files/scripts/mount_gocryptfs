@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 #
-# Wrapper for encfs
-# Mount encfs-encrypted filesystem As Local Directory
+# Wrapper for gocryptfs
+# Mount gocryptfs-encrypted filesystem As Local Directory
 # Copyright (c) Winston Astrachan, 2020
 
 
-LOCKFILE=/var/run/user/$UID/encfs_mounted
-MOUNT_PATH=/mnt
+LOCKFILE=/var/run/user/$UID/gocryptfs_mounted
+MOUNT_PATH=~
 ENCRYPTED_STORAGE=~/.encrypted
 
 
-# Test for encfs
-if [[ ! -x "$(command -v encfs)" ]]; then
-    echo "Error: encfs is not installed."
+# Test for gocryptfs
+if [[ ! -x "$(command -v gocryptfs)" ]]; then
+    echo "Error: gocryptfs is not installed."
     exit 1
 fi
 
@@ -42,11 +42,10 @@ fi
 
 # Create mountpoint
 if [[ ! -d "$MOUNT_PATH/$selected_dir" ]]; then
-    sudo mkdir -p "$MOUNT_PATH/$selected_dir"
-    sudo chown "$USER" "$MOUNT_PATH/$selected_dir"
+    mkdir -p "$MOUNT_PATH/$selected_dir"
 fi
 
 # Mount directory
-encfs "$ENCRYPTED_STORAGE/$selected_dir" "$MOUNT_PATH/$selected_dir"
+gocryptfs "$ENCRYPTED_STORAGE/$selected_dir" "$MOUNT_PATH/$selected_dir"
 echo $selected_dir >> $LOCKFILE
 echo "Mounted $MOUNT_PATH/$selected_dir"

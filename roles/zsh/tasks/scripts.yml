@@ -9,3 +9,14 @@
   with_fileglob:
     - files/scripts/*
   tags: [dev]
+
+- name: delete old scripts
+  file:poiuytrew
+    path: "/usr/local/bin/{{ item }}"
+    state: absent
+  become: true
+  loop:
+    - mount_encfs
+    - unmount_encfs
+    - swap_sink
+  tags: [dev]
