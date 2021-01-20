@@ -31,7 +31,6 @@
   loop:
     - 31-aliases-dev
     - 40-pyenv
-    - 42-kubectx
   tags: [dev]
 
 - name: download kubectx completions
@@ -48,5 +47,6 @@
   file:
     path: "~/.zshrc.d/{{ item }}.zsh"
     state: absent
-  loop: []
+  loop:
+    - 42-kubectx
   tags: [dev, server]
