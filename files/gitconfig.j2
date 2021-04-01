@@ -9,7 +9,6 @@
     br = branch -rv                   # branch (remote)
     c = commit -m                     # commit with message
     ca = commit -am                   # commit all with message
-    ci = commit                       # commit
     amend = commit --amend            # ammend your last commit
     ammend = commit --amend           # ammend your last commit
     co = checkout                     # checkout
@@ -18,7 +17,6 @@
     d = diff                          # diff unstaged changes
     dt = difftool                     # diff unstaged changes with difftool
     dc = diff --cached                # diff staged changes
-    last = diff HEAD^                 # diff last committed change
     pl = pull --rebase                # pull
     fo = fetch origin                 # fetch origin
     fu = fetch upstream               # fetch upstream
@@ -26,8 +24,6 @@
     rc = rebase --continue            # continue rebase
     rs = rebase --skip                # skip rebase
     r = remote -v                     # show remotes (verbose)
-    rp = remote prune                 # prune remote
-    rpo = remote prune origin         # prune remote (origin)
     unstage = reset HEAD              # remove files from index (tracking)
     uncommit = reset --soft HEAD^     # go back before last commit, with files in uncommitted state
     mt = mergetool                    # fire up the merge tool
@@ -83,6 +79,10 @@
     clean = git-lfs clean %f
     smudge = git-lfs smudge %f
     required = true
+
+[fetch]
+    prune = true
+    pruneTags = true
 
 [format]
     pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
