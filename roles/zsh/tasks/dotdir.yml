@@ -1,36 +1,58 @@
 ---
 
-- name: create dotfiles directory
+- name: create dotfiles directories
   file:
-    path: ~/.zshrc.d
+    path: "{{ item }}"
     state: directory
+  loop:
+    - ~/.zshrc.d
+    - ~/.zprofile.d
   tags: [dev, server]
 
-- name: update zshrc
+- name: update zshrc and zprofile
   template:
-    src: files/zshrc.j2
-    dest: ~/.zshrc
+    src: "files/{{ item }}.j2"
+    dest: "~/.{{ item }}"
+  loop:
+    - zshrc
+    - zprofile
+    - profile
   tags: [dev, server]
 
-- name: update base zsh dotfiles
+- name: update base zshrc.d files
   template:
     src: "files/zshrc.d/{{item}}.j2"
     dest: "~/.zshrc.d/{{item}}.zsh"
   loop:
     - 10-omz
-    - 11-path
     - 12-spaceship
-    - 20-environment
     - 30-aliases
   tags: [dev, server]
 
-- name: update development zsh dotfiles
+- name: update development zshrc.d files
   template:
     src: "files/zshrc.d/{{item}}.j2"
     dest: "~/.zshrc.d/{{item}}.zsh"
   loop:
     - 31-aliases-dev
     - 40-pyenv
+  tags: [dev]
+
+- name: update base zprofile.d files
+  template:
+    src: "files/zprofile.d/{{item}}.j2"
+    dest: "~/.zprofile.d/{{item}}.zsh"
+  loop:
+    - 10-environment
+    - 11-path
+  tags: [dev, server]
+
+- name: update development zprofile.d files
+  template:
+    src: "files/zprofile.d/{{item}}.j2"
+    dest: "~/.zprofile.d/{{item}}.zsh"
+  loop:
+    - 20-pyenv
   tags: [dev]
 
 - name: download kubectx completions
@@ -43,10 +65,19 @@
     - kubens.zsh
   tags: [dev]
 
-- name: remove zsh dotfiles
+- name: remove zshrc.d files
   file:
     path: "~/.zshrc.d/{{ item }}.zsh"
     state: absent
   loop:
+    - 11-path
+    - 20-environment
     - 42-kubectx
+  tags: [dev, server]
+
+- name: remove zprofile.d files
+  file:
+    path: "~/.zprofile.d/{{ item }}.zsh"
+    state: absent
+  loop: []
   tags: [dev, server]
