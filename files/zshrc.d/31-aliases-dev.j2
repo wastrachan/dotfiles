@@ -11,7 +11,7 @@ dev() {
     elif [[ "$1" == ans* ]]; then
         cd $DEV/Phobio/buzzsaw-ansible/
     elif [[ "$1" == ter* ]]; then
-        cd $DEV/Phobio/terraform-gcp/
+        cd $DEV/Phobio/terraform-google-buzzsaw/
     elif [[ "$1" == hel* ]]; then
         cd $DEV/Phobio/charts/
     elif [[ "$1" == cha* ]]; then
@@ -62,3 +62,4 @@ alias kexec-qa="kubectx gke_buzzsaw-staging_us-east4_staging-cluster; kubectl ex
 alias kshell-qa="kexec-qa python manage.py shell"
 alias kexec-staging="kubectx gke_buzzsaw-staging_us-east4_staging-cluster; kubectl exec -it deployments/buzzsaw-staging-gunicorn --"
 alias kshell-staging="kexec-staging python manage.py shell"
+alias kplay-prod="kubectx gke_buzzsaw-prod_us-east4_prod-cluster; kubectl exec -it buzzsaw-playground-0 -- /bin/bash"
