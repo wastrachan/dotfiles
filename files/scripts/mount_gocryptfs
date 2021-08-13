@@ -36,6 +36,7 @@ if [[ "$selection" == "c" ]]; then
     echo "Directory name?"
     read selected_dir
     mkdir "$selected_dir"
+    gocryptfs -init "$ENCRYPTED_STORAGE/$selected_dir"
 else
     selected_dir="${dirs[$selection]}"
 fi
