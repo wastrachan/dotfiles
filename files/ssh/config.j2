@@ -6,7 +6,8 @@ Host *
     ForwardAgent yes
     StrictHostKeyChecking no
     UserKnownHostsFile=/dev/null
-
+    IdentityFile ~/.ssh/id_ed25519_personal
+    IdentityFile ~/.ssh/id_rsa_personal
 
 {% for host in ssh_host_config %}
 Host {{ host.name }}
