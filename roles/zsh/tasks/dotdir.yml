@@ -62,6 +62,17 @@
     dest: "~/.oh-my-zsh/completions/_{{ item }}"
     mode: 0755
   loop:
+    - _kubectx.zsh
+    - _kubens.zsh
+  tags: [dev]
+
+# completions renamed to be prefixed with underscore, upstream
+# remove old completions to prevent future conflict
+- name: remove old kubectx completions
+  file:
+    path: "~/.oh-my-zsh/completions/_{{ item }}"
+    state: absent
+  loop:
     - kubectx.zsh
     - kubens.zsh
   tags: [dev]
