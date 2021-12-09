@@ -37,6 +37,7 @@
   loop:
     - 31-aliases-dev
     - 40-pyenv
+    - 41-nvm
   tags: [dev]
 
 - name: update base zprofile.d files
