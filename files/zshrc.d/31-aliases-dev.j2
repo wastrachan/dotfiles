@@ -65,3 +65,7 @@ alias kshell-qa="kexec-qa python manage.py shell"
 alias kexec-staging="kubectx gke_buzzsaw-staging_us-east4_staging-cluster; kubectl exec -it deployments/buzzsaw-staging-gunicorn --"
 alias kshell-staging="kexec-staging python manage.py shell"
 alias kplay-prod="kubectx gke_buzzsaw-prod_us-east4_prod-cluster; kubectl exec -it buzzsaw-playground-0 -- /bin/bash"
+
+# GAM/GYB
+function gam() { "$HOME/bin/gam/gam" "$@" ; }
+function gyb() { "$HOME/bin/gyb/gyb" "$@" ; }

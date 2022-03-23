@@ -8,26 +8,38 @@ set -sg repeat-time 600
 set -g prefix2 C-a
 bind C-a send-prefix -2
 set -g mouse on
-
-
-# -- display -------------------------------------------------------------------
-
-set -g allow-rename off
+set -g default-terminal "screen-256color"
+set -g history-limit 20000
+set -g buffer-limit 20
+set -sg escape-time 0
+set -g display-time 1500
+set -g remain-on-exit off
+setw -g allow-rename off
+setw -g automatic-rename off
+setw -g aggressive-resize on
 set -g set-titles on
-
+set -g set-titles-string "#I:#W"
 
 # -- navigation ----------------------------------------------------------------
+
+# alternate split pane bindings
+bind | split-window -h -c "#{pane_current_path}"
+bind _ split-window -v -c "#{pane_current_path}"
 
 # select next window
 unbind Space
 bind Space select-window -n
 
 # kill session/pane/window
-bind k confirm-before "kill-session"
-bind-key x      kill-pane
-bind-key X      kill-window
-bind-key q      confirm-before kill-session
+bind x kill-pane
+bind X kill-window
+bind k confirm-before kill-session
 
+# prompt to rename window right after it's created
+set-hook -g after-new-window 'command-prompt -I "#{window_name}" "rename-window '%%'"'
+
+# activity bell
+set -g visual-activity on
 
 {% if tmux_use_tpm %}
 # -- plugins -------------------------------------------------------------------
