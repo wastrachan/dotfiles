@@ -40,20 +40,18 @@ dev() {
 }
 
 # VSCodium
-alias code="vscodium"
-alias vscode="vscodium"
-alias v="vscodium"
-
-# Edit with Atom
-a() {
+code() {
     # Open CWD
     if [[ -z "$1" ]]; then
-        atom .
+        vscodium .
     # Open file/folder
     else
-        atom $1
+        vscodium $1
     fi
 }
+alias vscode="code"
+alias v="code"
+alias c="code"
 
 # Kubernetes
 alias k="kubectl"
