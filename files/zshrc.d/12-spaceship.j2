@@ -1,18 +1,22 @@
 # {{ ansible_managed }}
 
-
 SPACESHIP_PROMPT_ORDER=(
-  time
-  vi_mode
-  user
-  host
-  dir
-  git
-  pyenv
-  jobs
-  exit_code
-  line_sep
-  char
+  time          # Time stampts section
+  user          # Username section
+  host          # Hostname section
+  dir           # Current directory section
+  git           # Git section (git_branch + git_status)
+  package       # Package version
+  python        # Python section
+  docker        # Docker section
+  gcloud        # Google Cloud Platform section
+  venv          # virtualenv section
+  terraform     # Terraform workspace section
+  exec_time     # Execution time
+  line_sep      # Line break
+  jobs          # Background jobs indicator
+  exit_code     # Exit code section
+  char          # Prompt character
 )
 
 # USER
@@ -34,7 +38,6 @@ SPACESHIP_DIR_TRUNC="3"
 SPACESHIP_DIR_COLOR="105"
 
 # GIT
-# Disable git symbol
 SPACESHIP_GIT_SYMBOL=""
 SPACESHIP_GIT_BRANCH_PREFIX=""
 SPACESHIP_GIT_PREFIX='git('
@@ -45,13 +48,10 @@ SPACESHIP_GIT_STATUS_SUFFIX=""
 SPACESHIP_GIT_BRANCH_COLOR="172"
 SPACESHIP_GIT_STATUS_COLOR="196"
 
-# PYENV
-SPACESHIP_PYENV_PREFIX="py("
-SPACESHIP_PYENV_SUFFIX=") "
-SPACESHIP_PYENV_SYMBOL=""
-SPACESHIP_PYENV_COLOR="172"
-
-# KUBECTL
-SPACESHIP_KUBECTL_SHOW="true"
-SPACESHIP_KUBECTL_VERSION_SHOW="false"
-SPACESHIP_KUBECONTEXT_SHOW="true"
+# PYTHON VIRTUALENV
+SPACESHIP_VENV_GENERIC_NAMES=(virtualenv venv .venv)
+SPACESHIP_VENV_SHOW="true"
+SPACESHIP_VENV_PREFIX="py("
+SPACESHIP_VENV_SUFFIX=")"
+SPACESHIP_VENV_SYMBOL=""
+SPACESHIP_VENV_COLOR="172"
