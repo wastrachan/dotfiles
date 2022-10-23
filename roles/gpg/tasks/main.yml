@@ -1,50 +1,26 @@
 ---
 
-- name: test for gpg key
-  shell: gpg --list-secret-keys
+- name: Test for gpg key
+  ansible.builtin.shell: gpg --list-secret-keys
   register: gpg_test
-  when: gpg_key is not none
+  when: gpg_keys is not none
 
-- name: import gpg key
-  shell: |
-    echo '{{ gpg_key }}' | gpg --import --allow-secret-key-import --batch -
-  register: gpg_import
+- name: Import gpg key
+  ansible.builtin.shell: |
+    echo '{{ item.key }}' | gpg --import --batch -
+    echo '{{ item.signature }}:6:' | gpg --import-ownertrust -
   when:
     - gpg_key is not none
-    - gpg_test.stdout is not search(gpg_signature)
+    - gpg_test.stdout is not search(item.signature)
+  loop: "{{ gpg_keys }}"
 
-- name: trust gpg key
-  shell: |
-    expect -c '
-      spawn gpg --edit-key {{ gpg_signature }} trust quit
-      expect "Your decision? "
-      send -- "5\r"
-      expect "Do you really want to set this key to ultimate trust? (y/N) "
-      send -- "y\r"
-      expect eof
-    '
-  when:
-    - gpg_key is not none
-    - gpg_test.stdout is not search(gpg_signature)
-    - "{{ gpg_import.stderr is search('imported: 1') }}"
-
-- name: delete sks-keyservers CA cert
-  file:
-    path: ~/.gnupg/sks-keyservers.netCA.pem
-    state: absent
-
-- name: delete dirmngr configuration
-  file:
-    path: ~/.gnupg/dirmngr.conf
-    state: absent
-
-- name: update gpg configuration
-  template:
+- name: Update gpg configuration
+  ansible.builtin.template:
     src: gpg.conf.j2
     dest: ~/.gnupg/gpg.conf
 
-- name: update gpg agent configuration
-  copy:
+- name: Update gpg agent configuration
+  ansible.builtin.copy:
     src: gpg-agent.conf
     dest: ~/.gnupg/gpg-agent.conf
   notify: restart gpg-agent

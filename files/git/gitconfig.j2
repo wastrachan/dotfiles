@@ -113,6 +113,10 @@
     submodulesummary = true
 
 [user]
-    name = {{ git_name }}
-    email = {{ git_email }}
-    {% if git_signing_key %}signingkey = {{ git_signing_key}}{% endif %}
+    name = {{ git_name_personal }}
+    email = {{ git_email_personal }}
+    {% if git_signing_key_personal %}signingkey = {{ git_signing_key_personal }}{% endif %}
+
+# Conditionally include work config
+[includeIf "gitdir:{{ git_dir_work }}"]
+	path = ~/.gitconfig-work

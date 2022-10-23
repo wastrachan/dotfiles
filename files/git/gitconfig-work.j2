@@ -1,0 +1,6 @@
+# {{ ansible_managed }}
+
+[user]
+    name = {{ git_name_work }}
+    email = {{ git_email_work }}
+    {% if git_signing_key_work %}signingkey = {{ git_signing_key_work }}{% endif %}

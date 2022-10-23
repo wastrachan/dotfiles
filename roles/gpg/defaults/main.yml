@@ -1,5 +1,8 @@
 ---
 
-gpg_signature: null
-gpg_key: null
+gpg_keys:
+  - name: personal
+    signature: null
+    key: null
+
 gpg_default_keyserver: keyserver.ubuntu.com

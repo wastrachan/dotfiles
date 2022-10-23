@@ -1,11 +1,16 @@
 ---
 
 - name: Update global gitignore
-  template:
-    src: files/gitignore.j2
+  ansible.builtin.template:
+    src: files/git/gitignore.j2
     dest: ~/.gitignore
 
+- name: Update work gitconfig
+  ansible.builtin.template:
+    src: files/git/gitconfig-work.j2
+    dest: ~/.gitconfig-work
+
 - name: Update gitconfig
-  template:
-    src: files/gitconfig.j2
+  ansible.builtin.template:
+    src: files/git/gitconfig.j2
     dest: ~/.gitconfig
