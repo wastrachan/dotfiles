@@ -19,4 +19,6 @@
     - mount_encfs
     - unmount_encfs
     - swap_sink
+    - mount_gocryptfs
+    - unmount_gocryptfs
   tags: [dev]

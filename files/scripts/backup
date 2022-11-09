@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#
+# {{ ansible_managed }}
+
+if [ $(id -u) -ne 0 ]; then 
+  echo ""
+  echo "Backup must be run as root to include top-level directories:"
+  echo "  example: sudo -E backup"
+  exit
+fi
+
+restic backup -o b2.connections=32 --exclude-caches --exclude /var/lib/docker/volumes /
