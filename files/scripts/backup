@@ -9,4 +9,12 @@ if [ $(id -u) -ne 0 ]; then
   exit
 fi
 
-restic backup -o b2.connections=32 --exclude-caches --exclude /var/lib/docker/volumes /
+restic backup -o b2.connections=32 \
+              --exclude-caches \
+              --exclude=/home/winston/Documents \
+              --exclude=/home/winston/.cache \
+              --exclude=/home/winston/pCloudDrive \
+              --exclude=/home/winston/Dropbox\ \(Phobio\) \
+              --exclude=/var/lib/docker/volumes \
+              --exclude={/dev,/media,/mnt,/proc,/run,/sys,/tmp,/var/tmp} \
+              /
