@@ -6,6 +6,7 @@ Host *
     ForwardAgent yes
     StrictHostKeyChecking no
     UserKnownHostsFile=/dev/null
+    IdentitiesOnly yes
     IdentityFile ~/.ssh/id_ed25519_personal
     IdentityFile ~/.ssh/id_rsa_personal
 
@@ -22,6 +23,9 @@ Host {{ host.name }}
 {% endif %}
 {% if host.hostkeyalgorithms is defined %}
     HostkeyAlgorithms {{ host.hostkeyalgorithms }}
+{% endif %}
+{% if host.pubkeyacceptedkeytypes is defined %}
+    PubkeyAcceptedKeyTypes {{ host.pubkeyacceptedkeytypes }}
 {% endif %}
 {% if host.kexalgorithms is defined %}
     KexAlgorithms {{ host.kexalgorithms }}

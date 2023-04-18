@@ -7,33 +7,7 @@ Host *
     StrictHostKeyChecking no
     UserKnownHostsFile=/dev/null
     HostkeyAlgorithms +ssh-dss,ssh-rsa
+    PubkeyAcceptedKeyTypes +ssh-dss,ssh-rsa
     KexAlgorithms +diffie-hellman-group1-sha1
     Ciphers aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc,aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc
     IdentityFile ~/.ssh/id_rsa_personal
-
-
-{% for host in ssh_host_config %}
-Host {{ host.name }}
-{% if host.hostname is defined %}
-    HostName {{ host.hostname }}
-{% endif %}
-{% if host.user is defined %}
-    User {{ host.user }}
-{% endif %}
-{% if host.port is defined %}
-    Port {{ host.port }}
-{% endif %}
-{% if host.hostkeyalgorithms is defined %}
-    HostkeyAlgorithms {{ host.hostkeyalgorithms }}
-{% endif %}
-{% if host.kexalgorithms is defined %}
-    KexAlgorithms {{ host.kexalgorithms }}
-{% endif %}
-{% if host.ciphers is defined %}
-    Ciphers {{ host.ciphers }}
-{% endif %}
-{% if host.identity_file is defined %}
-    IdentityFile {{ host.identity_file }}
-{% endif %}
-
-{% endfor %}
