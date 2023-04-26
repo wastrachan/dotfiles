@@ -2,19 +2,29 @@
 #
 # {{ ansible_managed }}
 
-if [ $(id -u) -ne 0 ]; then 
+if [ $(id -u) -ne 0 ]; then
   echo ""
   echo "Backup must be run as root to include top-level directories:"
-  echo "  example: sudo -E backup"
+  echo "  example: sudo backup"
   exit
 fi
 
-restic backup -o b2.connections=32 \
-              --exclude-caches \
-              --exclude=/home/winston/Documents \
-              --exclude=/home/winston/.cache \
-              --exclude=/home/winston/pCloudDrive \
-              --exclude=/home/winston/Dropbox\ \(Phobio\) \
-              --exclude=/var/lib/docker/volumes \
-              --exclude={/dev,/media,/mnt,/proc,/run,/sys,/tmp,/var/tmp} \
-              /
+export RESTIC_PASSWORD="{{ restic_password }}"
+export RESTIC_REPOSITORY="s3:s3.us-west-004.backblazeb2.com/{{ restic_repository }}"
+export AWS_ACCESS_KEY_ID="{{ backblaze_account_id }}"
+export AWS_SECRET_ACCESS_KEY="{{ backblaze_account_key }}"
+
+restic backup \
+  -o s3.connections=10 \
+  --one-file-system \
+  --exclude-caches \
+  --exclude=/home/winston/Documents \
+  --exclude=/home/winston/.cache \
+  --exclude=/home/winston/Dropbox\ \(Phobio\) \
+  --exclude=/var/lib/docker/volumes \
+  / /boot
+
+unset RESTIC_PASSWORD
+unset RESTIC_REPOSITORY
+unset B2_ACCOUNT_ID
+unset B2_ACCOUNT_KEY

@@ -1,7 +1,7 @@
 ---
 
 - name: install utility scripts
-  copy:
+  template:
     src: "{{ item }}"
     dest: /usr/local/bin/
     mode: a+x
