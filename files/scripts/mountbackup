@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#
+# {{ ansible_managed }}
+
+export RESTIC_PASSWORD="{{ restic_password }}"
+export RESTIC_REPOSITORY="s3:s3.us-west-004.backblazeb2.com/{{ restic_repository }}"
+export AWS_ACCESS_KEY_ID="{{ backblaze_account_id }}"
+export AWS_SECRET_ACCESS_KEY="{{ backblaze_account_key }}"
+
+sudo mkdir -p /mnt/backup
+sudo chmod a+rwx /mnt/backup
+restic mount /mnt/backup
+
+unset RESTIC_PASSWORD
+unset RESTIC_REPOSITORY
+unset B2_ACCOUNT_ID
+unset B2_ACCOUNT_KEY
