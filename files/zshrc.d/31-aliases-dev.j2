@@ -39,18 +39,7 @@ dev() {
     fi
 }
 
-# VSCodium
-code() {
-    # Open CWD
-    if [[ -z "$1" ]]; then
-        vscodium .
-    # Open file/folder
-    else
-        vscodium $1
-    fi
-}
-alias vscode="code"
-alias v="code"
+# VSCode
 alias c="code"
 
 # Kubernetes
