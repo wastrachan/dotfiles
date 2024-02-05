@@ -1,26 +1,29 @@
 ---
-
 - name: Test for gpg key
-  ansible.builtin.shell: gpg --list-secret-keys
+  ansible.builtin.command: gpg --list-secret-keys
   register: gpg_test
   when: gpg_keys is not none
+  changed_when: false
 
 - name: Import gpg key
-  ansible.builtin.shell: |
+  ansible.builtin.command: |
     echo '{{ item.key }}' | gpg --import --batch -
     echo '{{ item.signature }}:6:' | gpg --import-ownertrust -
   when:
     - gpg_key is not none
     - gpg_test.stdout is not search(item.signature)
   loop: "{{ gpg_keys }}"
+  changed_when: false
 
 - name: Update gpg configuration
   ansible.builtin.template:
     src: gpg.conf.j2
+    mode: "0644"
     dest: ~/.gnupg/gpg.conf
 
 - name: Update gpg agent configuration
   ansible.builtin.copy:
     src: gpg-agent.conf
+    mode: "0644"
     dest: ~/.gnupg/gpg-agent.conf
-  notify: restart gpg-agent
+  notify: Restart gpg-agent

@@ -1,16 +1,18 @@
 ---
-
 - name: Update global gitignore
   ansible.builtin.template:
     src: files/git/gitignore.j2
+    mode: "0644"
     dest: ~/.gitignore
 
 - name: Update work gitconfig
   ansible.builtin.template:
     src: files/git/gitconfig-work.j2
+    mode: "0644"
     dest: ~/.gitconfig-work
 
 - name: Update gitconfig
   ansible.builtin.template:
     src: files/git/gitconfig.j2
+    mode: "0644"
     dest: ~/.gitconfig

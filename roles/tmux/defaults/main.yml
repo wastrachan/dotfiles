@@ -1,3 +1,2 @@
 ---
-
-tmux_use_tpm: true          # Install TPM for Plugin management
+tmux_use_tpm: true # Install TPM for Plugin management

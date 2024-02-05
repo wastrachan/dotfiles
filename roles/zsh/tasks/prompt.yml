@@ -1,32 +1,34 @@
 ---
-
-- name: update Oh My Zsh
-  git:
+- name: Update Oh My Zsh
+  ansible.builtin.git:
     repo: https://github.com/robbyrussell/oh-my-zsh.git
     dest: ~/.oh-my-zsh
-    clone: yes
-    update: yes
-    accept_hostkey: yes
+    clone: true
+    update: true
+    accept_hostkey: true
+    version: master
   tags: [dev, server]
 
-- name: create oh-my-zsh completions dir
-  file:
+- name: Create oh-my-zsh completions dir
+  ansible.builtin.file:
     dest: "~/.oh-my-zsh/completions/"
     state: directory
+    mode: "0755"
     recurse: true
   tags: [dev, server]
 
-- name: update spaceship
-  git:
+- name: Update spaceship
+  ansible.builtin.git:
     repo: https://github.com/denysdovhan/spaceship-prompt.git
     dest: ~/.oh-my-zsh/custom/themes/spaceship-prompt
-    clone: yes
-    update: yes
-    accept_hostkey: yes
+    clone: true
+    update: true
+    accept_hostkey: true
+    version: master
   tags: [dev, server]
 
-- name: link spaceship
-  file:
+- name: Link spaceship
+  ansible.builtin.file:
     src: ~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme
     dest: ~/.oh-my-zsh/custom/themes/spaceship.zsh-theme
     state: link

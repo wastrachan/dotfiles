@@ -1,13 +1,8 @@
 # {{ ansible_managed }}
 
-
 # Docker
 alias d='docker'
 alias dc='docker compose'
-
-# Screen
-alias scls='screen -ls'
-alias scr='screen -dRR'
 
 # PS
 alias psx="ps aux"
@@ -18,9 +13,6 @@ alias cssh="ssh -F ~/.ssh/config_cisco"
 
 # Show human friendly numbers and colors
 alias ls='ls -AFhG --color=always'
-if [[ "`uname`" == 'Darwin' ]]; then
-    alias ls='ls -AFhG'
-fi
 alias ll='ls -l'
 alias du='du -h -d 1 | sort -h'
 alias df='df -h'
@@ -30,15 +22,6 @@ alias npmls='npm ls --depth=0'
 
 # List files matching
 alias lsg='ll | grep'
-
-# Common shell functions
-alias less='less -r'
-alias tf='tail -f'
-alias l='less'
-
-# Zipping
-alias gz='tar -czvf'
-alias uz='tar -xzvf'
 
 alias ka9='killall -9'
 alias k9='kill -9'

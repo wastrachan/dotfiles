@@ -1,13 +1,8 @@
 ---
-
 - name: Update pyenv
-  git:
+  ansible.builtin.git:
     repo: https://github.com/pyenv/pyenv.git
     dest: ~/.pyenv
-    clone: yes
-    update: yes
-
-- name: Remove pyenv-virtualenv
-  file:
-    path: ~/.pyenv/plugins/pyenv-virtualenv
-    state: absent
+    version: master
+    clone: true
+    update: true

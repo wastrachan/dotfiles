@@ -1,5 +1,4 @@
 ---
-
 gpg_keys:
   - name: personal
     signature: null

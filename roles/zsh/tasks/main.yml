@@ -1,10 +1,16 @@
 ---
+- name: Include shell configuration tasks
+  ansible.builtin.include_tasks: shell.yml
+  tags: [server, dev]
 
-- include_tasks: shell.yml
+- name: Include prompt configuration tasks
+  ansible.builtin.include_tasks: prompt.yml
   tags: [server, dev]
-- include_tasks: prompt.yml
+
+- name: Include dotfiles configuration tasks
+  ansible.builtin.include_tasks: dotdir.yml
   tags: [server, dev]
-- include_tasks: dotdir.yml
-  tags: [server, dev]
-- include_tasks: scripts.yml
+
+- name: Include script configuration tasks
+  ansible.builtin.include_tasks: scripts.yml
   tags: [dev]

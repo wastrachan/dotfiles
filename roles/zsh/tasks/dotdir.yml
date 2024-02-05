@@ -1,28 +1,30 @@
 ---
-
-- name: create dotfiles directories
-  file:
+- name: Create dotfiles directories
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
+    mode: "0755"
   loop:
     - ~/.zshrc.d
     - ~/.zprofile.d
   tags: [dev, server]
 
-- name: update zshrc and zprofile
-  template:
+- name: Update zshrc and zprofile
+  ansible.builtin.template:
     src: "files/{{ item }}.j2"
     dest: "~/.{{ item }}"
+    mode: "0644"
   loop:
     - zshrc
     - zprofile
     - profile
   tags: [dev, server]
 
-- name: update base zshrc.d files
-  template:
-    src: "files/zshrc.d/{{item}}.j2"
-    dest: "~/.zshrc.d/{{item}}.zsh"
+- name: Update base zshrc.d files
+  ansible.builtin.template:
+    src: "files/zshrc.d/{{ item }}.j2"
+    dest: "~/.zshrc.d/{{ item }}.zsh"
+    mode: "0644"
   loop:
     - 10-omz
     - 12-spaceship
@@ -30,65 +32,55 @@
     - 30-aliases
   tags: [dev, server]
 
-- name: update development zshrc.d files
-  template:
-    src: "files/zshrc.d/{{item}}.j2"
-    dest: "~/.zshrc.d/{{item}}.zsh"
+- name: Update development zshrc.d files
+  ansible.builtin.template:
+    src: "files/zshrc.d/{{ item }}.j2"
+    dest: "~/.zshrc.d/{{ item }}.zsh"
+    mode: "0644"
   loop:
     - 31-aliases-dev
     - 40-pyenv
     - 41-nvm
   tags: [dev]
 
-- name: update base zprofile.d files
-  template:
-    src: "files/zprofile.d/{{item}}.j2"
-    dest: "~/.zprofile.d/{{item}}.zsh"
+- name: Update base zprofile.d files
+  ansible.builtin.template:
+    src: "files/zprofile.d/{{ item }}.j2"
+    dest: "~/.zprofile.d/{{ item }}.zsh"
+    mode: "0644"
   loop:
     - 10-environment
     - 11-path
   tags: [dev, server]
 
-- name: update development zprofile.d files
-  template:
-    src: "files/zprofile.d/{{item}}.j2"
-    dest: "~/.zprofile.d/{{item}}.zsh"
+- name: Update development zprofile.d files
+  ansible.builtin.template:
+    src: "files/zprofile.d/{{ item }}.j2"
+    dest: "~/.zprofile.d/{{ item }}.zsh"
+    mode: "0644"
   loop:
     - 20-pyenv
   tags: [dev]
 
-- name: download kubectx completions
-  get_url:
+- name: Download kubectx completions
+  ansible.builtin.get_url:
     url: "https://raw.githubusercontent.com/ahmetb/kubectx/master/completion/{{ item }}"
     dest: "~/.oh-my-zsh/completions/_{{ item }}"
-    mode: 0755
+    mode: "0755"
   loop:
     - _kubectx.zsh
     - _kubens.zsh
   tags: [dev]
 
-# completions renamed to be prefixed with underscore, upstream
-# remove old completions to prevent future conflict
-- name: remove old kubectx completions
-  file:
-    path: "~/.oh-my-zsh/completions/_{{ item }}"
-    state: absent
-  loop:
-    - kubectx.zsh
-    - kubens.zsh
-  tags: [dev]
-
-- name: remove zshrc.d files
-  file:
+- name: Remove zshrc.d files
+  ansible.builtin.file:
     path: "~/.zshrc.d/{{ item }}.zsh"
     state: absent
-  loop:
-    - 11-path
-    - 42-kubectx
+  loop: []
   tags: [dev, server]
 
-- name: remove zprofile.d files
-  file:
+- name: Remove zprofile.d files
+  ansible.builtin.file:
     path: "~/.zprofile.d/{{ item }}.zsh"
     state: absent
   loop: []

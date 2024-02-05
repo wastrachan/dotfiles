@@ -1,30 +1,29 @@
 ---
-
 - name: Update SSH directory
-  file:
+  ansible.builtin.file:
     path: ~/.ssh
     state: directory
-    mode: '0700'
+    mode: "0700"
 
 - name: Update SSH config files
-  template:
+  ansible.builtin.template:
     src: files/ssh/{{ item }}.j2
     dest: ~/.ssh/{{ item }}
-    mode: '0644'
+    mode: "0644"
   loop:
     - config
     - config_cisco
 
 - name: Update SSH public key(s)
-  copy:
+  ansible.builtin.copy:
     content: "{{ item.public_key }}"
     dest: "~/.ssh/{{ item.name }}.pub"
-    mode: '0644'
+    mode: "0644"
   with_items: "{{ ssh_keys }}"
 
 - name: Update SSH private key(s)
-  copy:
+  ansible.builtin.copy:
     content: "{{ item.private_key }}"
     dest: "~/.ssh/{{ item.name }}"
-    mode: '0600'
+    mode: "0600"
   with_items: "{{ ssh_keys }}"

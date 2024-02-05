@@ -1,7 +1,6 @@
 ---
-
-- name: install utility scripts
-  template:
+- name: Install utility scripts
+  ansible.builtin.template:
     src: "{{ item }}"
     dest: /usr/local/bin/
     mode: a+x
@@ -10,8 +9,8 @@
     - files/scripts/*
   tags: [dev]
 
-- name: delete old scripts
-  file:
+- name: Delete old scripts
+  ansible.builtin.file:
     path: "/usr/local/bin/{{ item }}"
     state: absent
   become: true

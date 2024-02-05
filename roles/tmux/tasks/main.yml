@@ -1,28 +1,30 @@
 ---
-
 - name: Update tmux config
-  template:
+  ansible.builtin.template:
     src: files/tmux.conf.j2
     dest: ~/.tmux.conf
+    mode: "0644"
   tags: [dev, server]
 
 - name: Create tmux plugin directory
-  file:
+  ansible.builtin.file:
     path: ~/.tmux/plugins/
     state: directory
+    mode: "0755"
   when: tmux_use_tpm
   tags: [dev, server]
 
 - name: Update tmux plugin manager
-  git:
+  ansible.builtin.git:
     repo: https://github.com/tmux-plugins/tpm
     dest: ~/.tmux/plugins/tpm
+    version: master
     clone: true
     update: true
   when: tmux_use_tpm
   tags: [dev, server]
 
 - name: Delete tmuxinator config directory
-  file:
+  ansible.builtin.file:
     path: ~/.config/tmuxinator
     state: absent

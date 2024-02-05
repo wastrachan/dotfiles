@@ -1,7 +1,3 @@
-#
-# Ansible-Managed Dotfiles Makefile
-# Winston Astrachan, 2019
-#
 SHELL=/bin/bash
 
 .PHONY: help
@@ -16,6 +12,7 @@ help:
 	@echo "  server            Apply 'server' dotfiles to a remote host"
 	@echo "  dev               Apply 'dev' dotfiles to a remote host"
 	@echo ""
+	@echo "  lint              Lint project with ansible-lint"
 	@echo "  vault-open        Open the Ansible vault for editing in '$$EDITOR'"
 	@echo "  vault-decrypt     Decrypt the Ansible Vault in-place"
 	@echo "  vault-encrypt     Re-encrypt the Ansible Vault"
@@ -30,6 +27,10 @@ help:
 	@read -s VAULTPASSWORD; \
 	echo "$$VAULTPASSWORD" > .vault_password;
 	@echo ""
+
+.PHONY: lint
+lint:
+	@ansible-lint
 
 .PHONY: local
 local: .vault_password

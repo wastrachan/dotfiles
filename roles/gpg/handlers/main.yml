@@ -1,4 +1,4 @@
 ---
-
-- name: restart gpg-agent
-  command: gpg-connect-agent reloadagent /bye
+- name: Restart gpg-agent
+  ansible.builtin.command: gpg-connect-agent reloadagent /bye
+  changed_when: false

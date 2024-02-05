@@ -1,24 +1,26 @@
 ---
-
 - name: Install .vimrc
-  template:
+  ansible.builtin.template:
     src: files/vimrc.j2
     dest: ~/.vimrc
+    mode: "0644"
 
 - name: Create Vim bundle directory
-  file:
+  ansible.builtin.file:
     path: ~/.vim/bundle/
     state: directory
-    recurse: yes
+    mode: "0755"
 
 - name: Update Vundle
-  git:
+  ansible.builtin.git:
     repo: https://github.com/VundleVim/Vundle.vim.git
     dest: ~/.vim/bundle/Vundle.vim
     clone: true
     update: true
+    version: master
   when: vim_use_vundle
 
 - name: Update Vim plugins
-  command: vim +PluginInstall +qall
+  ansible.builtin.command: vim +PluginInstall +qall
   when: vim_use_vundle
+  changed_when: false
