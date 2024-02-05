@@ -4,33 +4,33 @@
 DEV=${DEV_FOLDER:-"$HOME/Development"}
 dev() {
     # Work Projects
-    if [ "$1" == bu* ]; then
+    if [[ "$1" == bu* ]]; then
         cd $DEV/Phobio/buzzsaw/
-    elif [ "$1" == ans* ]; then
+    elif [[ "$1" == ans* ]]; then
         cd $DEV/Phobio/buzzsaw-ansible/
-    elif [ "$1" == ter* ]; then
+    elif [[ "$1" == ter* ]]; then
         cd $DEV/Phobio/terraform-google-buzzsaw/
-    elif [ "$1" == hel* ]; then
+    elif [[ "$1" == hel* ]]; then
         cd $DEV/Phobio/charts/
-    elif [ "$1" == cha* ]; then
+    elif [[ "$1" == cha* ]]; then
         cd $DEV/Phobio/charts/
-    elif [ "$1" == sky* ]; then
+    elif [[ "$1" == sky* ]]; then
         cd $DEV/Phobio/skyscraper/
 
     # Personal Projects
-    elif [ "$1" == dot* ]; then
+    elif [[ "$1" == dot* ]]; then
         cd $DEV/Other/dotfiles
-    elif [ "$1" == ho* ]; then
+    elif [[ "$1" == ho* ]]; then
         cd $DEV/Other/homeserver
-    elif [ "$1" == pkg* ]; then
+    elif [[ "$1" == pkg* ]]; then
         cd $DEV/Other/pkgbuilds
 
     # General Folders
-    elif [ "$1" == p* ]; then
+    elif [[ "$1" == p* ]]; then
         cd $DEV/Phobio/
-    elif [ "$1" = "o" ]; then
+    elif [[ "$1" == "o" ]]; then
         cd $DEV/Other/
-    elif [ "$1" == g* ]; then
+    elif [[ "$1" == g* ]]; then
         cd $DEV/GamersOutreach/
     else
         cd $DEV
@@ -39,7 +39,7 @@ dev() {
 
 # VSCode. Open provided directory or current directory if none provided.
 code() {
-    if [ -z "$1" ]; then
+    if [[ -z "$1" ]]; then
         command code .
     else
         command code $1

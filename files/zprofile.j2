@@ -1,7 +1,7 @@
 # {{ ansible_managed }}
 
 # Load all *.zsh files from zprofile.d directory
-if [ -d $HOME/.zprofile.d ]; then
+if [[ -d $HOME/.zprofile.d ]]; then
   for file in $HOME/.zprofile.d/*.zsh; do
     source $file
   done
