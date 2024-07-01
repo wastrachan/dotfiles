@@ -7,7 +7,7 @@ ssh_host_config: []
 #     user: root
 #     port: 2223
 #     proxy_jump: jump.domain.com
-#     hostkeyalgorithms: +ssh-dss
+#     hostkeyalgorithms: +ssh-rsa
 #     kexalgorithms: +diffie-hellman-group1-sha1
 #     ciphers: aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc
 
