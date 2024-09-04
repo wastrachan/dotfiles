@@ -20,7 +20,8 @@ restic backup \
   --exclude-caches \
   --exclude=/home/winston/Documents \
   --exclude=/home/winston/.cache \
-  --exclude=/home/winston/Dropbox\ \(Phobio\) \
+  --exclude=/home/winston/pCloudDrive \
+  --exclude=/home/winston/Phobio\ Dropbox \
   --exclude=/var/lib/docker/volumes \
   / /boot
 
