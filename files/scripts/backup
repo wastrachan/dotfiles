@@ -21,8 +21,9 @@ restic backup \
   --exclude=/home/winston/Documents \
   --exclude=/home/winston/.cache \
   --exclude=/home/winston/pCloudDrive \
-  --exclude=/home/winston/Phobio\ Dropbox \
   --exclude=/var/lib/docker/volumes \
+  --exclude=/home/winston/.config/Slack/Cache \
+  --exclude=/home/winston/.pcloud \
   / /boot
 
 unset RESTIC_PASSWORD
