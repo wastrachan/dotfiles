@@ -1,19 +1,30 @@
 ---
-- name: Test for gpg key
-  ansible.builtin.command: gpg --list-secret-keys
+- name: Check existing GPG keys
+  ansible.builtin.shell: gpg --list-secret-keys --with-colons
   register: gpg_test
-  when: gpg_keys is not none
+  when: gpg_keys is defined and gpg_keys is not none
   changed_when: false
 
-- name: Import gpg key
-  ansible.builtin.command: |
-    echo '{{ item.key }}' | gpg --import --batch -
-    echo '{{ item.signature }}:6:' | gpg --import-ownertrust -
+- name: Import GPG private key
+  ansible.builtin.shell: |
+    gpg --batch --import <<EOF
+    {{ item.key }}
+    EOF
+  register: import_result
   when:
-    - gpg_key is not none
-    - gpg_test.stdout is not search(item.signature)
+    - gpg_keys is defined and gpg_keys is not none
+    - item.signature not in gpg_test.stdout
   loop: "{{ gpg_keys }}"
-  changed_when: false
+  no_log: true
+
+- name: Import owner trust
+  ansible.builtin.shell: |
+    echo "{{ item.signature }}:6:" | gpg --import-ownertrust
+  when:
+    - gpg_keys is defined and gpg_keys is not none
+    - item.signature not in gpg_test.stdout
+  loop: "{{ gpg_keys }}"
+  no_log: true
 
 - name: Update gpg configuration
   ansible.builtin.template:

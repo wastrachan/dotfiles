@@ -19,6 +19,7 @@
     content: "{{ item.public_key }}"
     dest: "~/.ssh/{{ item.name }}.pub"
     mode: "0644"
+  no_log: true
   with_items: "{{ ssh_keys }}"
 
 - name: Update SSH private key(s)
@@ -26,4 +27,5 @@
     content: "{{ item.private_key }}"
     dest: "~/.ssh/{{ item.name }}"
     mode: "0600"
+  no_log: true
   with_items: "{{ ssh_keys }}"
