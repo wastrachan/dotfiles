@@ -3,6 +3,12 @@
 encryption = "gpg"
 [data]
     passphrase = {{ $passphrase | quote }}
+    name = "Winston Astrachan"
+    email_personal = "winston.astrachan@gmail.com"
+    email_work = "winston.astrachan@phobio.com"
+    gpg_personal = "695A7F5DEA640DF326CF3BF019458EC7CC6028D6"
+    gpg_work = "E28A9D71FFB6468268305E458FF5244353C035C3"
+
 [gpg]
     symmetric = true
     args = ["--batch", "--passphrase", {{ $passphrase | quote }}, "--no-symkey-cache", "--quiet"]

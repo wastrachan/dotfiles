@@ -12,8 +12,6 @@ dev() {
         cd $DEV/Phobio/skyscraper/
 
     # Personal Projects
-    elif [[ "$1" == dot* ]]; then
-        cd $DEV/Other/dotfiles
     elif [[ "$1" == ho* ]]; then
         cd $DEV/Other/homeserver
     elif [[ "$1" == pkg* ]]; then

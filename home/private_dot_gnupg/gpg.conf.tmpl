@@ -1,0 +1,28 @@
+#-----------------------------
+# default key
+#-----------------------------
+
+default-key {{ .gpg_personal }}
+encrypt-to {{ .gpg_personal }}
+
+#-----------------------------
+# keyservers
+#-----------------------------
+
+keyserver keyserver.ubuntu.com
+keyserver-options no-honor-keyserver-url
+
+#-----------------------------
+# behavior
+#-----------------------------
+
+use-agent
+no-emit-version
+no-comments
+
+display-charset utf-8
+keyid-format 0xlong
+with-subkey-fingerprint
+
+list-options show-uid-validity
+verify-options show-uid-validity

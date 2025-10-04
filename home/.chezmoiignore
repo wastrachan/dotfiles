@@ -1,0 +1,13 @@
+# local nvm files
+.nvm/.cache
+.nvm/alias
+.nvm/versions
+
+# local pyenv files
+.pyenv/versions
+
+# macos-only files
+{{ if ne .chezmoi.os "darwin" -}}
+.zshrc.d/42-homebrew.zsh
+.chezmoiscripts/darwin/**
+{{- end }}

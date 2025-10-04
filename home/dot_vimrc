@@ -1,5 +1,3 @@
-" This dotfile is managed by Ansible. This file should be edited in the dotfiles repo, and not by hand.
-
 " General Configuration
 set number
 set noshowmode
