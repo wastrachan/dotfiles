@@ -1,0 +1,46 @@
+[".oh-my-zsh"]
+    url = "https://github.com/robbyrussell/oh-my-zsh/archive/master.tar.gz"
+    type = "archive"
+    exact = false
+    stripComponents = 1
+    refreshPeriod = "24h"
+
+[".oh-my-zsh/custom/themes/spaceship-prompt"]
+    url = "https://github.com/denysdovhan/spaceship-prompt/archive/master.tar.gz"
+    type = "archive"
+    exact = false
+    stripComponents = 1
+    refreshPeriod = "24h"
+
+{{ if ne .chezmoi.os "darwin" -}}
+    {{ range list "_kubectx.zsh" "_kubens.zsh" -}}
+    [".oh-my-zsh/custom/completions/{{ . }}"]
+        type = "archive-file"
+        url = "https://github.com/ahmetb/kubectx/archive/master.tar.gz"
+        exact = true
+        stripComponents = 1
+        refreshPeriod = "168h"
+        path = "completion/{{ . }}"
+    {{ end -}}
+{{ end -}}
+
+[".pyenv"]
+    url = "https://github.com/pyenv/pyenv/archive/master.tar.gz"
+    type = "archive"
+    exact = false
+    stripComponents = 1
+    refreshPeriod = "24h"
+
+[".vim/bundle/Vundle.vim"]
+    url = "https://github.com/VundleVim/Vundle.vim/archive/master.tar.gz"
+    type = "archive"
+    exact = false
+    stripComponents = 1
+    refreshPeriod = "24h"
+
+[".nvm"]
+    url = "https://github.com/nvm-sh/nvm/archive/master.tar.gz"
+    type = "archive"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "24h"

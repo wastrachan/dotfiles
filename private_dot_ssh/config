@@ -1,0 +1,155 @@
+Host *
+    ForwardAgent yes
+    StrictHostKeyChecking no
+    UserKnownHostsFile=/dev/null
+    IdentitiesOnly yes
+    IdentityFile ~/.ssh/id_ed25519_personal
+    IdentityFile ~/.ssh/id_rsa_personal
+
+Host aur aur.archlinux.org
+    HostName aur.archlinux.org
+    User aur
+    IdentityFile ~/.ssh/id_ed25519_aur
+
+Host ares ares.rew1.red
+    HostName ares.rew1.red
+    User root
+
+Host dns1 dns1.rew1.red
+    HostName dns1.rew1.red
+    User root
+
+Host dns2 dns2.rew1.red
+    HostName dns2.rew1.red
+    User root
+
+Host cr1 cr1.rew1.red
+    HostName cr1.rew1.red
+
+Host ds1 ds1.rew1.red
+    User admin
+    HostkeyAlgorithms +ssh-rsa
+    PubkeyAcceptedKeyTypes +ssh-rsa
+    KexAlgorithms +diffie-hellman-group1-sha1
+    Ciphers +aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc,aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc
+    IdentityFile ~/.ssh/id_rsa_personal
+
+Host as1 as1.rew1.red
+    User admin
+    HostkeyAlgorithms +ssh-rsa
+    PubkeyAcceptedKeyTypes +ssh-rsa
+    KexAlgorithms +diffie-hellman-group1-sha1
+    Ciphers +aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc,aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc
+    IdentityFile ~/.ssh/id_rsa_personal
+
+Host as2 as2.rew1.red
+    User admin
+    HostkeyAlgorithms +ssh-rsa
+    PubkeyAcceptedKeyTypes +ssh-rsa
+    KexAlgorithms +diffie-hellman-group1-sha1
+    Ciphers +aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc,aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc
+    IdentityFile ~/.ssh/id_rsa_personal
+
+Host *.phobio.com *.phob.io
+    IdentityFile ~/.ssh/id_ed25519_phobio
+
+Host *.oneassembly.com *.oneassemb.ly
+    IdentityFile ~/.ssh/id_ed25519_phobio
+
+Host gcp-staging-* !gcp-staging-jump
+    Port 30000
+    ProxyJump jump.phob.io
+
+Host jump.phob.io
+    Port 30000
+
+Host gcp-staging-jump
+    HostName jump.phob.io
+    Port 30000
+
+Host gcp-prod-* !gcp-prod-jump
+    Port 30000
+    ProxyJump jump.phobio.com
+
+Host jump.phobio.com
+    Port 30000
+
+Host gcp-prod-jump
+    HostName jump.phobio.com
+    Port 30000
+
+Host gfg-lol-*
+    Port 41864
+
+Host gfg-lol-lol
+    HostName lol.gfg.lol
+
+Host gfg-lol-cloudrouter
+    HostName cloudrouter.gfg.lol
+
+Host gfg-lol-ns1
+    HostName ns1.gfg.lol
+
+Host gfg-lol-ns2
+    HostName ns2.gfg.lol
+
+Host gfg-cs1-core1
+    HostName 10.255.0.1
+
+Host gfg-cs2-core1
+    HostName 10.255.0.2
+
+Host gfg-bl1-core1
+    HostName 10.255.0.3
+
+Host gfg-bl2-core1
+    HostName 10.255.0.4
+
+Host gfg-sl1-serv1
+    HostName 10.255.0.5
+
+Host gfg-sl2-serv1
+    HostName 10.255.0.6
+
+Host gfg-dl1-dist1
+    HostName 10.255.0.7
+
+Host gfg-dl2-dist1
+    HostName 10.255.0.8
+
+Host gfg-dl1-dist2
+    HostName 10.255.0.9
+
+Host gfg-dl2-dist2
+    HostName 10.255.0.10
+
+Host gfg-netsvc1-core1
+    HostName 10.255.0.52
+    User root
+    Port 41864
+
+Host gfg-netsvc2-core1
+    HostName 10.255.0.53
+    User root
+    Port 41864
+
+Host gfg-ms1.core1
+    HostName 10.255.0.254
+    User admin
+
+Host gfg-ms2.core1
+    HostName 10.255.0.253
+    User admin
+
+Host gfg-ms1.serv1
+    HostName 10.255.0.252
+    User admin
+
+Host gfg-ms1.dist1
+    HostName 10.255.0.251
+    User admin
+
+Host gfg-ms1.dist2
+    HostName 10.255.0.250
+    User admin
+

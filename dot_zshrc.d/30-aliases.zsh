@@ -1,0 +1,25 @@
+# Docker
+alias d='docker'
+alias dc='docker compose'
+
+# PS
+alias psx="ps aux"
+alias psg="ps aux | grep "
+
+# SSH for Cisco gear
+alias cssh="ssh -F ~/.ssh/config_cisco"
+
+# Show human friendly numbers and colors
+alias ls='ls -AFhG --color=always'
+alias ll='ls -l'
+alias du='du -h -d 1 | sort -h'
+alias df='df -h'
+
+# NPM ls at one depth
+alias npmls='npm ls --depth=0'
+
+# List files matching
+alias lsg='ll | grep'
+
+alias ka9='killall -9'
+alias k9='kill -9'

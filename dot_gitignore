@@ -1,0 +1,53 @@
+## Global .gitignore File
+
+## VIM
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
+## Virtualenv
+.env
+.Python
+.python-version
+venv/
+
+## Vagrant
+.vagrant/
+
+## Screen
+.screenrc
+.screen
+
+## Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+## SASS
+*.sass-cache
+
+## OS X Junk
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+.Spotlight-V100
+.Trashes
+
+## Jetbrains IDE
+.idea/
+# .idea/workspace.xml
+# .idea/tasks.xml
+# .idea/dataSources.ids
+# .idea/dataSources.xml
+# .idea/sqlDataSources.xml
+# .idea/dynamic.xml
+*.ipr
+*.iws
+*.iml
+.idea_modules/
+
+## Vscode
+.vscode/

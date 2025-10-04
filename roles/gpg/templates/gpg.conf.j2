@@ -1,7 +1,0 @@
-# {{ ansible_managed }}
-
-keyserver {{ gpg_default_keyserver }}
-keyserver-options no-honor-keyserver-url
-
-default-key {{ gpg_keys.0.signature }}
-encrypt-to {{ gpg_keys.0.signature }}

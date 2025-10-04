@@ -1,9 +1,0 @@
----
-git_name_personal: "{{ ansible_user_id }}"
-git_email_personal: "{{ ansible_user_id }}@localhost"
-git_signing_key_personal: null
-
-git_name_work: "{{ ansible_user_id }}"
-git_email_work: "{{ ansible_user_id }}@localhost"
-git_signing_key_work: null
-git_dir_work: "~/work" # For conditionally included work config

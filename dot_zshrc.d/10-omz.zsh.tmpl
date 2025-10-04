@@ -1,0 +1,21 @@
+export ZSH=${ZDOTDIR:-$HOME}/.oh-my-zsh
+
+ZSH_THEME="spaceship"
+COMPLETION_WAITING_DOTS="true"
+ENABLE_CORRECTION="false"
+plugins=(
+  docker
+  gcloud
+  gitfast
+  pip
+  pyenv
+  python
+  sudo
+  {{- if eq .chezmoi.os "darwin" }}
+  brew
+  {{- else if eq .chezmoi.os "linux" }}
+  systemd
+  {{- end}}
+)
+
+source $ZSH/oh-my-zsh.sh
