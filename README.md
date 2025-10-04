@@ -22,4 +22,4 @@ Everybody should have a dotfiles repo, and this one is mine.
 
 The content of this project itself is licensed under the [MIT License](LICENSE).
 
-I've borrowed bits and pieces of my dotfiles from various projects that I've found helpful over the years. All included code carries it's original license, and my gratitude to the creators for their contribution to the open-source communitiy.
+I've borrowed bits and pieces of my dotfiles from various projects that I've found helpful over the years. All included code carries it's original license, and my gratitude to the creators for their contribution to the open-source community.
