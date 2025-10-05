@@ -7,7 +7,7 @@ Everybody should have a dotfiles repo, and this one is mine.
 ### Arch
 
 1. Install [chezmoi](https://www.chezmoi.io/install/)
-2. `chezmoi init --apply git@github.com:wastrachan/dotfiles.git`
+2. `sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply wastrachan`
 3. Enter the symmetric decryption secret when prompted
 
 ### MacOS
@@ -15,7 +15,7 @@ Everybody should have a dotfiles repo, and this one is mine.
 1. `xcode-select --install`
 2. Install [homebrew](https://brew.sh)
 3. Install [chezmoi](https://www.chezmoi.io/install/)
-4. `chezmoi init --apply git@github.com:wastrachan/dotfiles.git`
+4. `sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply wastrachan`
 5. Enter the symmetric decryption secret when prompted
 
 ## License

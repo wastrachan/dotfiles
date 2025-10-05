@@ -8,6 +8,22 @@
 
 # macos-only files
 {{ if ne .chezmoi.os "darwin" -}}
-.zshrc.d/42-homebrew.zsh
 .chezmoiscripts/darwin/**
+.zshrc.d/42-homebrew.zsh
+{{- end }}
+
+# development only files
+{{ if ne .dev_env true -}}
+.config/halloy
+.config/ngrok
+.gam
+.gitconfig-work
+.gnupg
+.kube
+.ssh
+.zprofile.d/20-pyenv.zsh
+.zshrc.d/31-aliases-dev.zsh
+.zshrc.d/40-pyenv.zsh
+.zshrc.d/41-nvm.zsh
+Development/
 {{- end }}

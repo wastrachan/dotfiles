@@ -1,8 +1,11 @@
 {{ $passphrase := promptStringOnce . "passphrase" "passphrase" -}}
+{{ $dev_env := promptBoolOnce . "dev_env" "Is this a development machine?" }}
+
 
 encryption = "gpg"
 [data]
     passphrase = {{ $passphrase | quote }}
+    dev_env = {{ $dev_env }}
     name = "Winston Astrachan"
     email_personal = "winston.astrachan@gmail.com"
     email_work = "winston.astrachan@phobio.com"
