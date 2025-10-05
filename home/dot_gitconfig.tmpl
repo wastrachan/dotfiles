@@ -115,6 +115,7 @@
     email = {{ .email_personal }}
     signingkey = {{ .gpg_personal }}
 
-# Conditionally include work config
+{{ if eq .dev_env true -}}
 [includeIf "gitdir:~/Development/Phobio/"]
-	path = ~/.gitconfig-work
+    path = ~/.gitconfig-work
+{{- end }}

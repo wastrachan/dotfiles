@@ -1,7 +1,6 @@
 {{ $passphrase := promptStringOnce . "passphrase" "passphrase" -}}
 {{ $dev_env := promptBoolOnce . "dev_env" "Is this a development machine?" }}
 
-
 encryption = "gpg"
 [data]
     passphrase = {{ $passphrase | quote }}

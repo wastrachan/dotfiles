@@ -6,14 +6,14 @@
 # local pyenv files
 .pyenv/versions
 
-# macos-only files
 {{ if ne .chezmoi.os "darwin" -}}
+# macos-only files
 .chezmoiscripts/darwin/**
 .zshrc.d/42-homebrew.zsh
 {{- end }}
 
-# development only files
 {{ if ne .dev_env true -}}
+# development only files
 .config/halloy
 .config/ngrok
 .gam

@@ -12,25 +12,6 @@
     stripComponents = 1
     refreshPeriod = "24h"
 
-{{ if ne .chezmoi.os "darwin" -}}
-    {{ range list "_kubectx.zsh" "_kubens.zsh" -}}
-    [".oh-my-zsh/custom/completions/{{ . }}"]
-        type = "archive-file"
-        url = "https://github.com/ahmetb/kubectx/archive/master.tar.gz"
-        exact = true
-        stripComponents = 1
-        refreshPeriod = "168h"
-        path = "completion/{{ . }}"
-    {{ end -}}
-{{ end -}}
-
-[".pyenv"]
-    url = "https://github.com/pyenv/pyenv/archive/master.tar.gz"
-    type = "archive"
-    exact = false
-    stripComponents = 1
-    refreshPeriod = "24h"
-
 [".vim/bundle/Vundle.vim"]
     url = "https://github.com/VundleVim/Vundle.vim/archive/master.tar.gz"
     type = "archive"
@@ -38,9 +19,35 @@
     stripComponents = 1
     refreshPeriod = "24h"
 
+{{- if eq .dev_env true -}}
+{{- if ne .chezmoi.os "darwin" -}}
+{{- range list "_kubectx.zsh" "_kubens.zsh" }}
+{{ "" }}
+[".oh-my-zsh/custom/completions/{{ . }}"]
+    type = "archive-file"
+    url = "https://github.com/ahmetb/kubectx/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+    path = "completion/{{ . }}"
+{{- end }}
+{{- end }}
+{{- end }}
+
+{{ if eq .dev_env true -}}
+[".pyenv"]
+    url = "https://github.com/pyenv/pyenv/archive/master.tar.gz"
+    type = "archive"
+    exact = false
+    stripComponents = 1
+    refreshPeriod = "24h"
+{{- end }}
+
+{{ if eq .dev_env true -}}
 [".nvm"]
     url = "https://github.com/nvm-sh/nvm/archive/master.tar.gz"
     type = "archive"
     exact = true
     stripComponents = 1
     refreshPeriod = "24h"
+{{- end }}

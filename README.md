@@ -4,19 +4,22 @@ Everybody should have a dotfiles repo, and this one is mine.
 
 ## Quickstart Guide
 
-### Arch
+### Linux
 
-1. Install [chezmoi](https://www.chezmoi.io/install/)
-2. `sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply wastrachan`
-3. Enter the symmetric decryption secret when prompted
+Install locally in `.local/bin`
+
+```shell
+sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply wastrachan
+```
 
 ### MacOS
+
+Install via `homebrew`
 
 1. `xcode-select --install`
 2. Install [homebrew](https://brew.sh)
 3. Install [chezmoi](https://www.chezmoi.io/install/)
-4. `sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply wastrachan`
-5. Enter the symmetric decryption secret when prompted
+4. `chezmoi init --apply wastrachan`
 
 ## License
 
