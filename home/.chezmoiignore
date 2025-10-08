@@ -14,13 +14,13 @@
 
 {{ if ne .dev_env true -}}
 # development only files
-.config/halloy
-.config/ngrok
+.config/**
 .gam
 .gitconfig-work
 .gnupg
 .kube
 .ssh
+.terraform.d
 .zprofile.d/20-pyenv.zsh
 .zshrc.d/31-aliases-dev.zsh
 .zshrc.d/40-pyenv.zsh
