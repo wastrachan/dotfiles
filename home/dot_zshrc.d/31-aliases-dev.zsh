@@ -14,8 +14,6 @@ dev() {
     # Personal Projects
     elif [[ "$1" == ho* ]]; then
         cd $DEV/Other/homeserver
-    elif [[ "$1" == pkg* ]]; then
-        cd $DEV/Other/pkgbuilds
 
     # General Folders
     elif [[ "$1" == p* ]]; then

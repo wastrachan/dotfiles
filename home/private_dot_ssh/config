@@ -6,11 +6,6 @@ Host *
     IdentityFile ~/.ssh/id_ed25519_personal
     IdentityFile ~/.ssh/id_rsa_personal
 
-Host aur aur.archlinux.org
-    HostName aur.archlinux.org
-    User aur
-    IdentityFile ~/.ssh/id_ed25519_aur
-
 Host ares ares.rew1.red
     HostName ares.rew1.red
     User root
