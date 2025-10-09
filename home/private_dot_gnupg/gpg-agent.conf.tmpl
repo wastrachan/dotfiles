@@ -7,4 +7,5 @@ default-cache-ttl-ssh 86400
 {{- if eq .chezmoi.os "darwin" }}
 # macos pinentry
 pinentry-program /opt/homebrew/bin/pinentry-mac
+# pinentry-program /opt/homebrew/bin/pinentry-touchid
 {{- end }}

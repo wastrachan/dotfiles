@@ -1,0 +1,35 @@
+# Halloy config.
+#
+# For a complete list of available options,
+# please visit https://halloy.chat/configuration/
+
+theme = "Discord"
+
+[servers.lanaddict]
+server = "irc.rew1.red"
+port = 6669
+use_tls = true
+chathistory = true
+nickname = "admin@{{ .chezmoi.hostname }}/lanaddict"
+password_file = "~/.config/halloy/password"
+
+[font]
+family = "Source Code Pro"
+
+[buffer.channel.nicklist]
+away = { dimmed = 0.3 }
+width = 100
+
+[actions.buffer]
+click_channel_name = "replace-pane"
+click_highlight = "replace-pane"
+click_username = "replace-pane"
+local = "replace-pane"
+message_channel = "replace-pane"
+message_user = "replace-pane"
+
+[actions.sidebar]
+buffer = "replace-pane"
+
+[buffer.text_input]
+auto_format = "markdown"
