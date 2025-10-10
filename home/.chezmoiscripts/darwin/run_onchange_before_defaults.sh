@@ -11,7 +11,7 @@ set -eux
 defaults write com.apple.dock "show-recents" -bool "false"
 
 # smaller dock icons
-# defaults write com.apple.dock "tilesize" -int "36"
+defaults write com.apple.dock "tilesize" -int "40"
 
 # do not autohide the dock
 defaults write com.apple.dock "autohide" -bool "false"

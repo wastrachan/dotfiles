@@ -1,4 +1,0 @@
-export EDITOR="vim"
-export ZSTD_NBTHREADS="0"
-export ZSTD_CLEVEL="12"
-export XZ_DEFAULTS="-T 0"

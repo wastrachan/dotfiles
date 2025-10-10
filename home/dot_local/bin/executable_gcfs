@@ -1,0 +1,20 @@
+#!/bin/sh
+
+ENCRYPTED_DIR="$HOME/Documents/Caisson"
+UNENCRYPTED_DIR="$HOME/Caisson"
+
+if [ ! -d "$UNENCRYPTED_DIR" ]; then
+    echo "Creating $UNENCRYPTED_DIR and mounting encrypted filesystem..."
+    mkdir -p "$UNENCRYPTED_DIR"
+    gocryptfs "$ENCRYPTED_DIR" "$UNENCRYPTED_DIR"
+else
+    echo "Checking mount status..."
+    if mount | grep -q "$UNENCRYPTED_DIR"; then
+        echo "Unmounting $UNENCRYPTED_DIR..."
+        umount "$UNENCRYPTED_DIR"
+    else
+        echo "$UNENCRYPTED_DIR exists but is not mounted"
+    fi
+    echo "Removing $UNENCRYPTED_DIR..."
+    rmdir "$UNENCRYPTED_DIR"
+fi
