@@ -37,6 +37,16 @@ code() {
 }
 alias c="code"
 
+# Zed. Open provided directory or current directory if none provided.
+zed() {
+    if [[ -z "$1" ]]; then
+        command zed .
+    else
+        command zed $1
+    fi
+}
+alias z="zed"
+
 # Kubernetes
 alias k="kubectl"
 alias kctx="kubectx"

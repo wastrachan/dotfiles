@@ -147,4 +147,3 @@ Host gfg-ms1.dist1
 Host gfg-ms1.dist2
     HostName 10.255.0.250
     User admin
-

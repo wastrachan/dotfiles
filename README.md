@@ -16,10 +16,9 @@ sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply wastrachan
 
 Install via `homebrew`
 
-1. `xcode-select --install`
-2. Install [homebrew](https://brew.sh)
-3. Install [chezmoi](https://www.chezmoi.io/install/)
-4. `chezmoi init --apply wastrachan`
+1. Install [homebrew](https://brew.sh)
+2. Install [chezmoi](https://www.chezmoi.io/install/)
+3. `chezmoi init --apply wastrachan`
 
 ## License
 

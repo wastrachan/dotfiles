@@ -20,7 +20,6 @@
     refreshPeriod = "24h"
 
 {{- if eq .dev_env true -}}
-{{- if ne .chezmoi.os "darwin" -}}
 {{- range list "_kubectx.zsh" "_kubens.zsh" }}
 {{ "" }}
 [".oh-my-zsh/custom/completions/{{ . }}"]
@@ -30,7 +29,6 @@
     stripComponents = 1
     refreshPeriod = "168h"
     path = "completion/{{ . }}"
-{{- end }}
 {{- end }}
 {{- end }}
 
