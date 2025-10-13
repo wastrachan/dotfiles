@@ -25,5 +25,8 @@
 .zshrc.d/31-aliases-dev.zsh
 .zshrc.d/40-pyenv.zsh
 .zshrc.d/41-nvm.zsh
+.zshrc.d/42-homebrew.zsh
+.zshrc.d/43-kubectl.zsh
+.zshrc.d/44-helm.zsh
 Development/
 {{- end }}
