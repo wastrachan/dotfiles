@@ -49,7 +49,7 @@ customer_id = my_customer
 debug_level = 0
 device_max_results = 200
 domain = ''
-drive_dir = /home/winston/Downloads
+drive_dir = {{ .chezmoi.homeDir }}/Downloads
 drive_max_results = 1000
 drive_v3_native_names = true
 email_batch_size = 50
@@ -121,4 +121,3 @@ update_cros_ou_with_id = false
 use_projectid_as_name = false
 user_max_results = 500
 user_service_account_access_only = false
-
