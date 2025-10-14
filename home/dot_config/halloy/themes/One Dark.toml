@@ -26,8 +26,8 @@ timestamp = "#737984"
 topic = "#878E9B"
 url = "#61AFEF"
 
-  [buffer.server_messages]
-  default = "#3592C4"
+[buffer.server_messages]
+default = "#3592C4"
 
 [buttons.primary]
 background = "#00000000"

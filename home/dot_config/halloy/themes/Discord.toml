@@ -26,16 +26,16 @@ timestamp = "#9C9DA2"
 topic = "#DBDCDF"
 url = "#2AAAF8"
 
-  [buffer.server_messages]
-  join = "#8E9297"
-  part = "#8E9297"
-  quit = "#8E9297"
-  monitored_online = "#8E9297"
-  monitored_offline = "#8E9297"
-  standard_reply_fail = "#8E9297"
-  standard_reply_warn = "#8E9297"
-  standard_reply_note = "#8E9297"
-  default = "#8E9297"
+[buffer.server_messages]
+join = "#8E9297"
+part = "#8E9297"
+quit = "#8E9297"
+monitored_online = "#8E9297"
+monitored_offline = "#8E9297"
+standard_reply_fail = "#8E9297"
+standard_reply_warn = "#8E9297"
+standard_reply_note = "#8E9297"
+default = "#8E9297"
 
 [buttons.primary]
 background = "#303236"

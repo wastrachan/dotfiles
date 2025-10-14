@@ -1,17 +1,17 @@
 SPACESHIP_PROMPT_ORDER=(
-  time          # Time stampts section
-  user          # Username section
-  host          # Hostname section
-  dir           # Current directory section
-  git           # Git section (git_branch + git_status)
-  package       # Package version
-  python        # Python section
-  venv          # virtualenv section
-  exec_time     # Execution time
-  line_sep      # Line break
-  jobs          # Background jobs indicator
-  exit_code     # Exit code section
-  char          # Prompt character
+    time          # Time stampts section
+    user          # Username section
+    host          # Hostname section
+    dir           # Current directory section
+    git           # Git section (git_branch + git_status)
+    package       # Package version
+    python        # Python section
+    venv          # virtualenv section
+    exec_time     # Execution time
+    line_sep      # Line break
+    jobs          # Background jobs indicator
+    exit_code     # Exit code section
+    char          # Prompt character
 )
 
 # USER
