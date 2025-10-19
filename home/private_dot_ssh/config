@@ -5,6 +5,7 @@ Host *
     IdentitiesOnly yes
     IdentityFile ~/.ssh/id_ed25519_personal
     IdentityFile ~/.ssh/id_rsa_personal
+    SetEnv TERM=xterm-256color
 
 Host ares ares.rew1.red
     HostName ares.rew1.red
