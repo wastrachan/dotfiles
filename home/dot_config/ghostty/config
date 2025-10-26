@@ -1,8 +1,11 @@
 auto-update=check
 background-blur=true
 background-opacity=0.85
+clipboard-paste-protection=false
 clipboard-trim-trailing-spaces=true
 font-family="Source Code Pro"
 quit-after-last-window-closed=true
+shell-integration-features=cursor, sudo, title, ssh-env, no-ssh-terminfo
+shell-integration=detect
 window-height=42
 window-width=138
