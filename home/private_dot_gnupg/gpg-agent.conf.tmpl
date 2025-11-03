@@ -3,3 +3,8 @@ max-cache-ttl 86400
 default-cache-ttl 86400
 max-cache-ttl-ssh 86400
 default-cache-ttl-ssh 86400
+
+{{- if eq .chezmoi.os "darwin" }}
+# macos pinentry
+pinentry-program /opt/homebrew/bin/pinentry
+{{- end }}
