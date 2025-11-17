@@ -21,5 +21,11 @@ alias npmls='npm ls --depth=0'
 # List files matching
 alias lsg='ll | grep'
 
+# Kill
 alias ka9='killall -9'
 alias k9='kill -9'
+
+{{ if eq .chezmoi.os "darwin" -}}
+# Run mtr as sudo
+alias mtr='sudo mtr'
+{{- end }}
