@@ -2,14 +2,12 @@
 
 brew bundle --file=/dev/stdin <<EOF
 
-tap "artginzburg/tap"
 tap "gromgit/homebrew-fuse"
 tap "hashicorp/tap"
 tap "jorgelbg/tap"
 tap "lyraphase/pcloud"
 tap "qmk/qmk"
 
-brew "artginzburg/tap/sudo-touchid"
 brew "bat"
 brew "gh"
 brew "git-secret"
@@ -41,7 +39,6 @@ cask "gcloud-cli"
 cask "ghostty"
 cask "halloy"
 cask "iina"
-cask "inkscape"
 cask "lyraphase/pcloud/pcloud-drive"
 cask "macfuse"
 cask "ngrok"
