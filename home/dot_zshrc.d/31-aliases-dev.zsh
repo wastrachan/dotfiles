@@ -7,7 +7,7 @@ dev() {
     elif [[ "$1" == ter* ]]; then
         cd $DEV/Phobio/terraform-google-buzzsaw/
     elif [[ "$1" == cha* ]]; then
-        cd $DEV/Phobio/charts/
+        cd $DEV/Phobio/buzzsaw-charts/
     elif [[ "$1" == sky* ]]; then
         cd $DEV/Phobio/skyscraper/
 
@@ -26,16 +26,6 @@ dev() {
         cd $DEV
     fi
 }
-
-# VSCode. Open provided directory or current directory if none provided.
-code() {
-    if [[ -z "$1" ]]; then
-        command code .
-    else
-        command code $1
-    fi
-}
-alias c="code"
 
 # Zed. Open provided directory or current directory if none provided.
 zed() {

@@ -51,3 +51,6 @@ Icon
 
 ## Vscode
 .vscode/
+
+# Helm language server
+.helm_ls_cache
