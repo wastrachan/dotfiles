@@ -52,5 +52,8 @@ Icon
 ## Vscode
 .vscode/
 
-# Helm language server
+## Claude Code
+.claude/
+
+## Helm language server
 .helm_ls_cache
