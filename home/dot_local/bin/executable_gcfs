@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ENCRYPTED_DIR="$HOME/Documents/Caisson"
+ENCRYPTED_DIR="$PROTON_HOME/Documents/Caisson/"
 UNENCRYPTED_DIR="$HOME/Caisson"
 
 if [ ! -d "$UNENCRYPTED_DIR" ]; then

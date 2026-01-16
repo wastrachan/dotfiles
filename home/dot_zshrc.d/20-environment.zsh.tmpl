@@ -1,0 +1,4 @@
+export GPG_TTY=$(tty)
+{{ if and (eq .chezmoi.os "darwin") .dev_env -}}
+export PROTON_HOME="/Users/$USER/Library/CloudStorage/ProtonDrive-{{ .email_personal }}-folder/"
+{{- end }}
