@@ -33,15 +33,6 @@
 {{- end }}
 
 {{ if eq .dev_env true -}}
-[".pyenv"]
-    url = "https://github.com/pyenv/pyenv/archive/master.tar.gz"
-    type = "archive"
-    exact = false
-    stripComponents = 1
-    refreshPeriod = "24h"
-{{- end }}
-
-{{ if eq .dev_env true -}}
 [".nvm"]
     url = "https://github.com/nvm-sh/nvm/archive/master.tar.gz"
     type = "archive"

@@ -3,9 +3,6 @@
 .nvm/alias
 .nvm/versions
 
-# local pyenv files
-.pyenv/versions
-
 {{ if ne .chezmoi.os "darwin" -}}
 # macos-only files
 .chezmoiscripts/darwin/**
@@ -21,12 +18,11 @@
 .kube
 .ssh
 .terraform.d
-.zprofile.d/20-pyenv.zsh
 .zshrc.d/31-aliases-dev.zsh
-.zshrc.d/40-pyenv.zsh
 .zshrc.d/41-nvm.zsh
 .zshrc.d/42-homebrew.zsh
 .zshrc.d/43-kubectl.zsh
 .zshrc.d/44-helm.zsh
+.zshrc.d/45-uv.zsh
 Development/
 {{- end }}
