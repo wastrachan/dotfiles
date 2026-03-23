@@ -7,70 +7,71 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-    "agent": {
-        "favorite_models": [],
-        "model_parameters": [],
-        "use_modifier_to_send": true,
+  "agent": {
+    "favorite_models": [],
+    "model_parameters": [],
+    "use_modifier_to_send": true,
+  },
+  "restore_on_startup": "empty_tab",
+  "session": {
+    "trust_all_worktrees": true,
+  },
+  "on_last_window_closed": "platform_default",
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry",
     },
-    "restore_on_startup": "empty_tab",
-    "session": {
-        "trust_all_worktrees": true,
-    },
-    "on_last_window_closed": "platform_default",
-    "agent_servers": {
-        "claude-acp": {
-            "type": "registry",
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "icon_theme": {
+    "mode": "system",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)",
+  },
+  "minimap": {
+    "show": "always",
+  },
+  "languages": {
+    "Python": {
+      "code_actions_on_format": {
+        // Organize imports
+        "source.organizeImports.ruff": true,
+        // Fix all auto-fixable lint violations
+        "source.fixAll.ruff": true,
+      },
+      "formatter": {
+        "language_server": {
+          "name": "ruff",
         },
+      },
+      "language_servers": [
+        // Disable basedpyright and enable ty, and include all
+        // other registered language servers (ruff, pylsp).
+        "ty",
+        "!basedpyright",
+        "!pyright",
+        "...",
+      ],
     },
-    "telemetry": {
-        "diagnostics": false,
-        "metrics": false,
-    },
-    "icon_theme": {
-        "mode": "system",
-        "light": "Zed (Default)",
-        "dark": "Zed (Default)",
-    },
-    "minimap": {
-        "show": "always",
-    },
-    "languages": {
-        "Python": {
-            "code_actions_on_format": {
-                // Organize imports
-                "source.organizeImports.ruff": true,
-                // Fix all auto-fixable lint violations
-                "source.fixAll.ruff": true,
-            },
-            "formatter": {
-                "language_server": {
-                    "name": "ruff",
-                },
-            },
-            "language_servers": [
-                // Disable basedpyright and enable ty, and include all
-                // other registered language servers (ruff, pylsp, pyright).
-                "ty",
-                "!basedpyright",
-                "...",
-            ],
-        },
-    },
-    "base_keymap": "VSCode",
-    "ui_font_size": 15,
-    "buffer_font_size": 12,
-    "buffer_font_family": "Source Code Pro",
-    "format_on_save": "off",
-    "theme": {
-        "mode": "system",
-        "light": "One Light",
-        "dark": "One Dark",
-    },
-    "file_types": {
-        "Helm": [
-            "**/templates/**/*.tpl",
-            "**/templates/**/*.yaml",
-            "**/templates/**/*.yml",
-        ],
-    },
+  },
+  "base_keymap": "VSCode",
+  "ui_font_size": 15,
+  "buffer_font_size": 12,
+  "buffer_font_family": "Source Code Pro",
+  "format_on_save": "off",
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark",
+  },
+  "file_types": {
+    "Helm": [
+      "**/templates/**/*.tpl",
+      "**/templates/**/*.yaml",
+      "**/templates/**/*.yml",
+    ],
+  },
 }
