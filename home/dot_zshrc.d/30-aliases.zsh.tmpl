@@ -28,4 +28,7 @@ alias k9='kill -9'
 {{ if eq .chezmoi.os "darwin" -}}
 # Run mtr as sudo
 alias mtr='sudo mtr'
+
+# Daily software updates
+alias update='brew update && brew upgrade && brew upgrade --cask && brew cleanup && mas upgrade'
 {{- end }}

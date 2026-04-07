@@ -54,5 +54,6 @@
       "Bash(stat *)"
     ]
   },
-  "autoDreamEnabled": false
+  "autoDreamEnabled": false,
+  "autoUpdatesChannel": "stable"
 }
