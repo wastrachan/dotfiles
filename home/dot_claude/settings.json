@@ -54,6 +54,7 @@
       "Bash(stat *)"
     ]
   },
+  "autoUpdatesChannel": "stable",
   "autoDreamEnabled": false,
-  "autoUpdatesChannel": "stable"
+  "theme": "dark-ansi"
 }
