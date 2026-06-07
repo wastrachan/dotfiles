@@ -16,12 +16,14 @@ dev() {
         cd $DEV/Other/homeserver
 
     # General Folders
-    elif [[ "$1" == p* ]]; then
+    elif [[ "$1" == "p" ]]; then
         cd $DEV/Phobio/
     elif [[ "$1" == "o" ]]; then
         cd $DEV/Other/
-    elif [[ "$1" == g* ]]; then
+    elif [[ "$1" == "g" ]]; then
         cd $DEV/GamersOutreach/
+    elif [[ "$1" == "pu" ]]; then
+        cd $DEV/PUCKCURL/
     else
         cd $DEV
     fi
