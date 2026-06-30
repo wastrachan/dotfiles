@@ -23,7 +23,7 @@ dev() {
     elif [[ "$1" == "g" ]]; then
         cd $DEV/GamersOutreach/
     elif [[ "$1" == "pu" ]]; then
-        cd $DEV/PUCKCURL/
+        cd $DEV/PUCKHATE/
     else
         cd $DEV
     fi
