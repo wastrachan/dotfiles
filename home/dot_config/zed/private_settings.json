@@ -43,6 +43,16 @@
 			"type": "registry"
 		}
 	},
+	"edit_predictions": {
+		"provider": "open_ai_compatible_api",
+		"mode": "eager",
+		"open_ai_compatible_api": {
+			"prompt_format": "zeta2_1",
+			"model": "mradermacher/zeta-2.1-i1-GGUF:Q4_K_M",
+			"api_url": "http://localhost:9931/v1/completions",
+			"max_output_tokens": 512
+		}
+	},
 	"context_servers": {
 		"Astro docs": {
 			"enabled": true,
