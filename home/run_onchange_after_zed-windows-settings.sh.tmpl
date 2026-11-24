@@ -1,0 +1,7 @@
+{{ if .chezmoi.kernel.osrelease | lower | contains "microsoft" -}}
+#!/bin/sh
+# settings hash: {{ include "dot_config/zed/private_settings.json" | sha256sum }}
+set -e
+appdata="$(cd /mnt/c && cmd.exe /c 'echo %APPDATA%' | tr -d '\r')"
+cp "$HOME/.config/zed/settings.json" "$(wslpath "$appdata")/Zed/settings.json"
+{{ end -}}
